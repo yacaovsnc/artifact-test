@@ -1,0 +1,20 @@
+  
+name: Upload_Download_Artifact- Ring 1
+on: [push]
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+    - uses: actions/checkout@v1
+
+    - run: mkdir -p path/to/artifact
+    - run: mkdir -p path/to/artifact/oneMore
+
+    - run: echo hello > path/to/artifact/world.txt
+    - run: echo bad > path/to/artifact/bad:file.txt
+
+    - name: 'Upload an Artifact'
+      uses: actions/upload-artifact@releases/v1
+      with:
+        name: my-artifact1
+        path: path/to/artifact
