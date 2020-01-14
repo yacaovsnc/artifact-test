@@ -1,5 +1,5 @@
   
-name: Upload_Download_Artifact- Ring 1
+name: Test_Upload_Artifact_With_Invalid_File
 on: [push]
 jobs:
   build:
