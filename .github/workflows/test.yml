@@ -11,11 +11,9 @@ jobs:
     - run: mkdir -p path/to/artifact/oneMore
 
     - run: echo hello > path/to/artifact/world.txt
-    - run: echo bad > path/to/artifact/bad:file.txt
-    - run: echo hello2 > path/to/artifact/world2.txt
 
     - name: 'Upload an Artifact'
       uses: actions/upload-artifact@releases/v1
       with:
-        name: my-artifact1
+        name: 'my artifact1'
         path: path/to/artifact
