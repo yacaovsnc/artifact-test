@@ -15,5 +15,5 @@ jobs:
     - name: 'Upload an Artifact'
       uses: actions/upload-artifact@releases/v1
       with:
-        name: 'my artifact1'
+        name: 'My-Artifact'
         path: path/to/artifact
