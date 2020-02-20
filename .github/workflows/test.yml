@@ -43,3 +43,7 @@ jobs:
         ls
         cd artifact
         ls
+        $test = Get-Content world.txt
+        $test
+      shell: pwsh
+      
