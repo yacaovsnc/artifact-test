@@ -10,7 +10,7 @@ jobs:
     - run: mkdir -p path/to/artifact
     - run: mkdir -p path/to/artifact/oneMore
 
-    - run: echo hello > path/to/artifact/world.txt
+    - run: echo hello? > path/to/artifact/world.txt
       
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
@@ -46,5 +46,10 @@ jobs:
         ls
         $test = Get-Content artifact/world.txt
         $test
+        $containsWord = $test | %{$_ -match "hello?"}
+        if(!($containsWord -contains $true))
+        {
+            Write-Error "File contents of downloaded artifact are incorrect"
+        }
       shell: pwsh
       
