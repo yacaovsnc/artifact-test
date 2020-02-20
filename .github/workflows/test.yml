@@ -42,8 +42,9 @@ jobs:
         cd some/other/path
         ls
         cd artifact
+        cd to
         ls
-        $test = Get-Content world.txt
+        $test = Get-Content artifact/world.txt
         $test
       shell: pwsh
       
