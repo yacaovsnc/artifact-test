@@ -11,9 +11,30 @@ jobs:
     - run: mkdir -p path/to/artifact/oneMore
 
     - run: echo hello > path/to/artifact/world.txt
+      
+    - run: mkdir -p path/to/artifact2
+    - run: echo hello2 > path/to/artifact2/world2.txt
 
     - name: 'Upload an Artifact'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact'
-        path: path/to/artifact
+        path: path/to/artifact/world.txt
+    
+    - name: 'Upload an Artifact'
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'My-Artifact2'
+        path: path/to/artifact2/
+        
+    
+    - name: 'Download all Artifacts'
+      uses: actions/download-artifact@konradpabjan/v2-is-almost-here
+        
+
+    - name: Test
+      run: |
+        cd path/to
+        ls
+        cd artifact
+        ls
