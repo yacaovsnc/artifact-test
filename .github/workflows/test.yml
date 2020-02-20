@@ -13,7 +13,7 @@ jobs:
     - run: echo hello > path/to/artifact/world.txt
 
     - name: 'Upload an Artifact'
-      uses: actions/upload-artifact@releases/v1
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact'
         path: path/to/artifact
