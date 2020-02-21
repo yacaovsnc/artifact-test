@@ -18,6 +18,21 @@ jobs:
       
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
+    
+    - run: mkdir -p path/to/big
+    - run: fallocate -l 3MB path/to/big/bigFile.txt
+    
+    - name: 'Upload Big file V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Big-Artifact-V1'
+        path: path/to/big/
+        
+    - name: 'Upload Big file V2'
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'Big-Artifact-V2'
+        path: path/to/big/
 
     - name: 'Upload an individual file'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
