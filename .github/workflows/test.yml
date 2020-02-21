@@ -34,28 +34,7 @@ jobs:
     - name: 'Upload using a wildcard pattern'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
       with:
-        path: path/**/artifac*/
-        
-    - name: 'Download all Artifacts'
-      uses: actions/download-artifact@konradpabjan/v2-is-almost-here
-      with:
-        path: some/other/path
-        
-    - name: Test
-      run: |
-        cd some/other/path
-        ls
-        cd artifact
-        cd to
-        ls
-        $test = Get-Content artifact/world.txt
-        $test
-        $containsWord = $test | %{$_ -match "hello?"}
-        if(!($containsWord -contains $true))
-        {
-            Write-Error "File contents of downloaded artifact are incorrect"
-        }
-      shell: pwsh
+        path: path/**/[abc]rtifac*/
       
   vm-job:
     runs-on: [ubuntu-latest]
