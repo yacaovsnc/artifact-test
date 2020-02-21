@@ -25,7 +25,7 @@ jobs:
         name: 'My-Artifact'
         path: path/to/artifact/world.txt
     
-    - name: 'Upload an Directory'
+    - name: 'Upload a Directory'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact2'
