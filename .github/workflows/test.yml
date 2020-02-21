@@ -63,6 +63,9 @@ jobs:
       
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
+    
+    - run: mkdir -p path/to/artifact3
+    - run: echo helloooo > path/to/artifact3/xx:xx.txt
 
     - name: 'Upload an individual file'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
@@ -74,7 +77,7 @@ jobs:
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact2'
-        path: path/to/artifact2/
+        path: path/to/artifact3/
         
     - name: 'Upload using a wildcard pattern'
       uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
