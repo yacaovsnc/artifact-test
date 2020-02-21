@@ -2,7 +2,62 @@
 name: Test_Upload_Artifact_With_Invalid_File
 on: [push]
 jobs:
-  build:
+  container-job:
+    runs-on: [ubuntu-latest]
+
+    container:
+      image:  node:10.16-jessie
+    
+    steps:
+    - uses: actions/checkout@v1
+
+    - run: mkdir -p path/to/artifact
+    - run: mkdir -p path/to/artifact/oneMore
+
+    - run: echo hello? > path/to/artifact/world.txt
+      
+    - run: mkdir -p path/to/artifact2
+    - run: echo hello2 > path/to/artifact2/world2.txt
+
+    - name: 'Upload an individual file'
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'My-Artifact'
+        path: path/to/artifact/world.txt
+    
+    - name: 'Upload an Directory'
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'My-Artifact2'
+        path: path/to/artifact2/
+        
+    - name: 'Upload using a wildcard pattern'
+      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        path: path/**/artifac*/
+        
+    - name: 'Download all Artifacts'
+      uses: actions/download-artifact@konradpabjan/v2-is-almost-here
+      with:
+        path: some/other/path
+        
+    - name: Test
+      run: |
+        cd some/other/path
+        ls
+        cd artifact
+        cd to
+        ls
+        $test = Get-Content artifact/world.txt
+        $test
+        $containsWord = $test | %{$_ -match "hello?"}
+        if(!($containsWord -contains $true))
+        {
+            Write-Error "File contents of downloaded artifact are incorrect"
+        }
+      shell: pwsh
+      
+  vm-job:
     runs-on: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v1
