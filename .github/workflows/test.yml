@@ -1,5 +1,5 @@
   
-name: Test_Upload_Artifact_With_Invalid_File
+name: Test_Artifact_V2
 on: [push]
 jobs:
   container-job:
@@ -73,11 +73,7 @@ jobs:
         
     - name: Test
       run: |
-        cd some/other/path
-        ls
-        cd artifact
-        cd to
-        ls
+        cd some/other/path/artifact/to
         $test = Get-Content artifact/world.txt
         $test
         $containsWord = $test | %{$_ -match "hello?"}
