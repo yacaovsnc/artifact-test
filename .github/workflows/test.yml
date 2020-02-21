@@ -23,7 +23,7 @@ jobs:
     - run: fallocate -l 50MB path/to/big/bigFile.txt
     
     - name: 'Upload Big file V1'
-      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      uses: actions/upload-artifact@v1
       with:
         name: 'Big-Artifact-V1'
         path: path/to/big/
