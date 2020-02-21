@@ -1,5 +1,3 @@
 # artifact-test
 
 Test
-
-
