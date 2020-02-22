@@ -16,7 +16,7 @@ jobs:
     - run: echo hello2 > path/to/artifact2/world2.txt
     
     - run: mkdir -p path/to/big
-    - run: fallocate -l 25MB path/to/big/bigFile.txt
+    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=16
     
     - name: 'Upload Big file V1'
       uses: actions/upload-artifact@v1
