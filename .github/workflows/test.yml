@@ -29,25 +29,25 @@ jobs:
         path: path/to/big/
         
     - name: 'Upload Big file V2'
-      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'Big-Artifact-V2'
         path: path/to/big/
 
     - name: 'Upload an individual file'
-      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact'
         path: path/to/artifact/world.txt
     
     - name: 'Upload a Directory'
-      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'My-Artifact2'
         path: path/to/artifact2/
         
     - name: 'Upload using a wildcard pattern'
-      uses: actions/upload-artifact@konradpabjan/v2-is-almost-here
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         path: path/**/[abc]rtifac*/
       
