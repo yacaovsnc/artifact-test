@@ -18,6 +18,9 @@ jobs:
     - run: mkdir -p path/to/big
     - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=16
     
+    - run: mkdir -p path/to/big2
+    - run: dd if=/dev/urandom of=path/to/big2/bigFile.txt bs=64M count=16
+    
     - name: 'Upload Big file V1'
       uses: actions/upload-artifact@v1
       with:
@@ -29,6 +32,18 @@ jobs:
       with:
         name: 'Big-Artifact-V2'
         path: path/to/big/
+        
+    - name: 'Upload Big file2 V2'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'Big-Artifact-V2'
+        path: path/to/big2/
+        
+    - name: 'Upload Big file V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Big-Artifact-V1'
+        path: path/to/big2/
 
     - name: 'Upload an individual file'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
