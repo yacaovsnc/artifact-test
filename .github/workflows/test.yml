@@ -36,13 +36,13 @@ jobs:
     - name: 'Upload Big file2 V2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
-        name: 'Big-Artifact-V2'
+        name: 'Big-Artifact-2-V2'
         path: path/to/big2/
         
-    - name: 'Upload Big file V1'
+    - name: 'Upload Big file2 V1'
       uses: actions/upload-artifact@v1
       with:
-        name: 'Big-Artifact-V1'
+        name: 'Big-Artifact-2-V1'
         path: path/to/big2/
 
     - name: 'Upload an individual file'
