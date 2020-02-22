@@ -15,11 +15,9 @@ jobs:
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
     
+    # Create a single 2GB file that will be uploaded
     - run: mkdir -p path/to/big
-    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=16
-    
-    - run: mkdir -p path/to/big2
-    - run: dd if=/dev/urandom of=path/to/big2/bigFile.txt bs=64M count=16
+    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=32
     
     - name: 'Upload Big file V1'
       uses: actions/upload-artifact@v1
@@ -33,31 +31,20 @@ jobs:
         name: 'Big-Artifact-V2'
         path: path/to/big/
         
-    - name: 'Upload Big file2 V2'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'Big-Artifact-2-V2'
-        path: path/to/big2/
-        
-    - name: 'Upload Big file2 V1'
+    # Create lots of small files that are split from a single 10MB File, each file is 100 bytes
+    - run: |
+        dd if=/dev/zero of=small/files/masterfile bs=1 count=10485760
+        cd small/files
+        split -b 100 -a 10 masterfile
+
+    - name: 'Upload Small files V1'
       uses: actions/upload-artifact@v1
       with:
-        name: 'Big-Artifact-2-V1'
-        path: path/to/big2/
-
-    - name: 'Upload an individual file'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'My-Artifact'
-        path: path/to/artifact/world.txt
-    
-    - name: 'Upload a Directory'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'My-Artifact2'
-        path: path/to/artifact2/
+        name: 'Small-Artifacts-V1'
+        path: .
         
-    - name: 'Upload using a wildcard pattern'
+    - name: 'Upload Small files V2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
-        path: path/**/[abc]rtifac*/
+        name: 'Small-Artifacts-V2'
+        path: .
