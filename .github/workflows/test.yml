@@ -18,7 +18,26 @@ jobs:
     # Create a single 512MB file that will be uploaded
     - run: mkdir -p path/to/big
     - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
-    
+        
+    # Create lots of small files that are split from a single 10MB File, each file is 100 bytes
+    - run: |
+        mkdir -p small/files
+        dd if=/dev/zero of=small/files/masterfile bs=1 count=10485760
+        cd small/files
+        split -b 100 -a 10 masterfile
+
+    - name: 'Upload Small files V2'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'Small-Artifacts-V2'
+        path: .
+
+    - name: 'Upload Small files V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Small-Artifacts-V1'
+        path: .
+
     - name: 'Upload Big file V1'
       uses: actions/upload-artifact@v1
       with:
@@ -30,22 +49,3 @@ jobs:
       with:
         name: 'Big-Artifact-V2'
         path: path/to/big/
-        
-    # Create lots of small files that are split from a single 10MB File, each file is 100 bytes
-    - run: |
-        mkdir -p small/files
-        dd if=/dev/zero of=small/files/masterfile bs=1 count=10485760
-        cd small/files
-        split -b 100 -a 10 masterfile
-
-    - name: 'Upload Small files V1'
-      uses: actions/upload-artifact@v1
-      with:
-        name: 'Small-Artifacts-V1'
-        path: .
-        
-    - name: 'Upload Small files V2'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'Small-Artifacts-V2'
-        path: .
