@@ -1,3 +1,3 @@
 # artifact-test
 
-Teesting
+Test
