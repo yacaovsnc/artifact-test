@@ -12,6 +12,22 @@ jobs:
       
     #- run: mkdir -p path/to/artifact2
     #- run: echo hello2 > path/to/artifact2/world2.txt
+      
+    # Create a single 512MB file that will be uploaded
+    - run: mkdir -p path/to/big
+    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
+        
+    - name: 'Upload Big file V2'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'Big-Artifact-V2'
+        path: path/to/big/
+    
+    - name: 'Upload Big file V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Big-Artifact-V1'
+        path: path/to/big/
         
     # Create lots of small files that are split from a single 2MB File, each file is 500 bytes, 4000 files in total
     - run: |
@@ -19,6 +35,16 @@ jobs:
         dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
         cd small/files
         split -b 500 -a 10 masterfile
+    
+    - name: 'Upload Small files V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Small-Artifacts-V1'
+        path: .
+    #  env:
+    #    https_proxy: "http://127.0.0.1:8888"
+    #    http_proxy: "http://127.0.0.1:8888"
+    #    NODE_TLS_REJECT_UNAUTHORIZED: "0"
       
     - name: 'Upload Small files V2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
@@ -29,29 +55,3 @@ jobs:
      #   https_proxy: "http://127.0.0.1:8888"
      #   http_proxy: "http://127.0.0.1:8888"
      #   NODE_TLS_REJECT_UNAUTHORIZED: "0"
-      
-    - name: 'Upload Small files V1'
-      uses: actions/upload-artifact@v1
-      with:
-        name: 'Small-Artifacts-V1'
-        path: .
-    #  env:
-    #    https_proxy: "http://127.0.0.1:8888"
-    #    http_proxy: "http://127.0.0.1:8888"
-    #    NODE_TLS_REJECT_UNAUTHORIZED: "0"
-        
-        # Create a single 512MB file that will be uploaded
-    #- run: mkdir -p path/to/big
-    #- run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
-        
-    #- name: 'Upload Big file V2'
-    #  uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-    #  with:
-    #    name: 'Big-Artifact-V2'
-    #    path: path/to/big/
-    
-    #- name: 'Upload Big file V1'
-    #  uses: actions/upload-artifact@v1
-    #  with:
-    #    name: 'Big-Artifact-V1'
-    #    path: path/to/big/
