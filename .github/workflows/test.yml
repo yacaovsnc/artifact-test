@@ -24,7 +24,7 @@ jobs:
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'Small-Artifacts-V2'
-        path: C:\ProdRunner\plz-upload
+        path: .
       env:
         https_proxy: "http://127.0.0.1:8888"
         http_proxy: "http://127.0.0.1:8888"
@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: 'Small-Artifacts-V1'
-        path: C:\ProdRunner\plz-upload
+        path: .
       env:
         https_proxy: "http://127.0.0.1:8888"
         http_proxy: "http://127.0.0.1:8888"
