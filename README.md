@@ -1,4 +1,3 @@
 # artifact-test
 
-Test
 Testing
