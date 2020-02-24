@@ -13,9 +13,6 @@ jobs:
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
     
-    - run: for /l %a in (1 1 1200) do echo hello world > "%a.txt"
-      shell: cmd
-    
     # Create a single 512MB file that will be uploaded
     # - run: mkdir -p path/to/big
     # - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
@@ -31,7 +28,7 @@ jobs:
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'Small-Artifacts-V2'
-        path: .
+        path: ../../../stuff/
       env:
         https_proxy: "http://127.0.0.1:8888"
         http_proxy: "http://127.0.0.1:8888"
@@ -41,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: 'Small-Artifacts-V1'
-        path: .
+        path: ../../../stuff/
       env:
         https_proxy: "http://127.0.0.1:8888"
         http_proxy: "http://127.0.0.1:8888"
