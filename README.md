@@ -1,4 +1,4 @@
 # artifact-test
 
-Test now
+Testing now
 
