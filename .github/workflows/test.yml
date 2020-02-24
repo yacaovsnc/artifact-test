@@ -14,8 +14,8 @@ jobs:
     - run: echo hello2 > path/to/artifact2/world2.txt
     
     # Create a single 512MB file that will be uploaded
-    - run: mkdir -p path/to/big
-    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
+    # - run: mkdir -p path/to/big
+    # - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
         
     # Create lots of small files that are split from a single 2MB File, each file is 1000 bytes, 2000 files in total
     - run: |
