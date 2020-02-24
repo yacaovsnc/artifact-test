@@ -20,20 +20,20 @@ jobs:
     #    cd small/files
     #    split -b 500 -a 10 masterfile
       
-    - name: 'Upload Small files V1'
-      uses: actions/upload-artifact@v1
+    - name: 'Upload Small files V2'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
-        name: 'Small-Artifacts-V1'
+        name: 'Small-Artifacts-V2'
         path: C:\ProdRunner\plz-upload
       env:
         https_proxy: "http://127.0.0.1:8888"
         http_proxy: "http://127.0.0.1:8888"
         NODE_TLS_REJECT_UNAUTHORIZED: "0"
-
-    - name: 'Upload Small files V2'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
+      
+    - name: 'Upload Small files V1'
+      uses: actions/upload-artifact@v1
       with:
-        name: 'Small-Artifacts-V2'
+        name: 'Small-Artifacts-V1'
         path: C:\ProdRunner\plz-upload
       env:
         https_proxy: "http://127.0.0.1:8888"
