@@ -3,7 +3,7 @@ name: Test_Artifact_V2
 on: [push]
 jobs:      
   vm-job:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     #- run: mkdir -p path/to/artifact
     #- run: mkdir -p path/to/artifact/oneMore
@@ -14,11 +14,11 @@ jobs:
     #- run: echo hello2 > path/to/artifact2/world2.txt
         
     # Create lots of small files that are split from a single 2MB File, each file is 500 bytes, 4000 files in total
-    #- run: |
-    #    mkdir -p small/files
-    #    dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
-    #    cd small/files
-    #    split -b 500 -a 10 masterfile
+    - run: |
+        mkdir -p small/files
+        dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
+        cd small/files
+        split -b 500 -a 10 masterfile
       
     - name: 'Upload Small files V2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
@@ -30,15 +30,15 @@ jobs:
         http_proxy: "http://127.0.0.1:8888"
         NODE_TLS_REJECT_UNAUTHORIZED: "0"
       
-    #- name: 'Upload Small files V1'
-    #  uses: actions/upload-artifact@v1
-    #  with:
-    #    name: 'Small-Artifacts-V1'
-    #    path: C:\ProdRunner\plz-upload
-    #  env:
-    #    https_proxy: "http://127.0.0.1:8888"
-    #    http_proxy: "http://127.0.0.1:8888"
-    #    NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    - name: 'Upload Small files V1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Small-Artifacts-V1'
+        path: C:\ProdRunner\plz-upload
+      env:
+        https_proxy: "http://127.0.0.1:8888"
+        http_proxy: "http://127.0.0.1:8888"
+        NODE_TLS_REJECT_UNAUTHORIZED: "0"
         
         # Create a single 512MB file that will be uploaded
     #- run: mkdir -p path/to/big
