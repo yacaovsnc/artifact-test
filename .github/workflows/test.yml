@@ -13,6 +13,8 @@ jobs:
     - run: mkdir -p path/to/artifact2
     - run: echo hello2 > path/to/artifact2/world2.txt
     
+    - run: for /l %a in (1 1 1200) do echo hello world > "%a.txt"
+    
     # Create a single 512MB file that will be uploaded
     # - run: mkdir -p path/to/big
     # - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=8
