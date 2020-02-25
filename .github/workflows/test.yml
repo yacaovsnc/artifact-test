@@ -13,17 +13,17 @@ jobs:
     #- run: mkdir -p path/to/artifact2
     #- run: echo hello2 > path/to/artifact2/world2.txt
       
-    # Create a single 4GB file that will be uploaded
+    # Create a single 5GB file that will be uploaded
     - run: mkdir -p path/to/big
-    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=64
+    - run: dd if=/dev/urandom of=path/to/big/bigFile.txt bs=5G count=1
         
-    - name: 'Upload 4GB artifact V2'
+    - name: 'Upload 5GB artifact V2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'Big-Artifact-V2'
         path: path/to/big/
     
-    - name: 'Upload 4GB arficact V1'
+    - name: 'Upload 5GB arficact V1'
       uses: actions/upload-artifact@v1
       with:
         name: 'Big-Artifact-V1'
