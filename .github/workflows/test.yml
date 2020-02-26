@@ -55,3 +55,22 @@ jobs:
       with:
         name: 'Small-Artifacts-V2'
         path: .
+        
+  v2-artifacts-self-hosted:
+    runs-on: self-hosted
+    steps:  
+    - name: 'Upload Large Artifact v2'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
+      with:
+        name: 'Big-Artifact-V2-self-hosted'
+        path: C:\ArtifactTesting\
+        
+  v1-artifacts-self-hosted:
+    runs-on: self-hosted
+    steps:  
+    - name: 'Upload Large Artifact v1'
+      uses: actions/upload-artifact@v1
+      with:
+        name: 'Big-Artifact-V2-self-hosted'
+        path: C:\ArtifactTesting\
+
