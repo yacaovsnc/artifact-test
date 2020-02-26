@@ -28,7 +28,7 @@ jobs:
         cd small/files
         split -b 50 -a 10 masterfile
     - name: 'Upload 42k Small files'
-      uses: konradpabjan/upload-artifact@6393f2f63b9d112c61000656a0f7f3f153e5c7ae
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
         name: 'Small-Artifacts-V2'
         path: .
