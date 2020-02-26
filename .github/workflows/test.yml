@@ -2,29 +2,34 @@
 name: Test_Artifact_V2
 on: [push]
 jobs:           
-  v2-artifacts-self-hosted:
-    runs-on: self-hosted
-    steps:
-    - name: Print env variables
-      run: |
-        Get-Childitem env:
-        gci env: | sort name
-    - name: 'Upload Large Artifact v2'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'Big-Artifact-V2-self-hosted' 
-        path: C:\ArtifactTesting\ # should be 2 files, test.txt -> 50MB and test2.txt -> 1GB
-        
-  v1-artifacts-self-hosted:
-    runs-on: self-hosted
-    steps:  
-    - name: Print env variables
-      run: |
-        Get-Childitem env:
-        gci env: | sort name
-    - name: 'Upload Large Artifact v1'
+  v1-artifacts:
+    runs-on: ubuntu-latest
+    steps: 
+    # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total
+    - run: |
+        mkdir -p small/files
+        dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
+        cd small/files
+        split -b 50 -a 10 masterfile
+    
+    - name: 'Upload 42k Small files'
       uses: actions/upload-artifact@v1
       with:
-        name: 'Big-Artifact-V2-self-hosted'
-        path: C:\ArtifactTesting\  # should be 2 files, test.txt -> 50MB and test2.txt -> 1GB
+        name: 'Small-Artifacts-V1'
+        path: .
+      
+  v2-artifacts:
+    runs-on: [ubuntu-latest]
+    steps:
+    # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total
+    - run: |
+        mkdir -p small/files
+        dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
+        cd small/files
+        split -b 50 -a 10 masterfile
+    - name: 'Upload 42k Small files'
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here@6393f2f63b9d112c61000656a0f7f3f153e5c7ae
+      with:
+        name: 'Small-Artifacts-V2'
+        path: .
 
