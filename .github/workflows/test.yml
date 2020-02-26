@@ -34,6 +34,7 @@ jobs:
     steps:
     # Create a large file that will be uploaded
     - run: |
+        printenv
         mkdir -p path/to/big
         dd if=/dev/urandom of=path/to/big/bigFile.txt bs=64M count=32
         
@@ -58,7 +59,9 @@ jobs:
         
   v2-artifacts-self-hosted:
     runs-on: self-hosted
-    steps:  
+    steps:
+    - name: Print env variables
+      run: set
     - name: 'Upload Large Artifact v2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
@@ -68,6 +71,8 @@ jobs:
   v1-artifacts-self-hosted:
     runs-on: self-hosted
     steps:  
+    - name: Print env variables
+      run: set
     - name: 'Upload Large Artifact v1'
       uses: actions/upload-artifact@v1
       with:
