@@ -62,8 +62,8 @@ jobs:
     - name: 'Upload Large Artifact v2'
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
       with:
-        name: 'Big-Artifact-V2-self-hosted'
-        path: C:\ArtifactTesting\
+        name: 'Big-Artifact-V2-self-hosted' 
+        path: C:\ArtifactTesting\ # should be 2 files, test.txt -> 50MB and test2.txt -> 1GB
         
   v1-artifacts-self-hosted:
     runs-on: self-hosted
@@ -72,5 +72,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: 'Big-Artifact-V2-self-hosted'
-        path: C:\ArtifactTesting\
+        path: C:\ArtifactTesting\  # should be 2 files, test.txt -> 50MB and test2.txt -> 1GB
 
