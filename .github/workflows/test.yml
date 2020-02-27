@@ -17,19 +17,3 @@ jobs:
       with:
         name: 'Small-Artifacts-V1'
         path: .
-      
-  v2-artifacts:
-    runs-on: [ubuntu-latest]
-    steps:
-    # Create lots of small files that are split from a single 2MB File, each file is 500 bytes
-    - run: |
-        mkdir -p small/files
-        dd if=/dev/zero of=small/files/masterfile bs=1 count=2097152
-        cd small/files
-        split -b 500 -a 10 masterfile
-    - name: 'Upload 42k Small files'
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here
-      with:
-        name: 'Small-Artifacts-V2'
-        path: .
-
