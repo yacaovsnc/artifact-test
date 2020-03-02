@@ -8,15 +8,15 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
     - run: |
-        mkdir -p path/to/artifact
-        echo hello > path/to/artifact/world.txt
-        mkdir -p path/to/artifact2
-        echo hello2 > path/to/artifact2/world2.txt
+        mkdir -p to-upload/artifact
+        echo hello > to-upload/artifact/world.txt
+        mkdir -p to-upload/artifact2
+        echo hello2 > to-upload/artifact2/world2.txt
     - name: 'Upload 42k Small files'	
       uses: actions/upload-artifact@v1	
       with:	
-        name: 'Small-Artifacts-V1'	
-        path: .
+        name: 'Artifacts-V1'	
+        path: to-upload/
       
   v2-artifacts:
     runs-on: [self-hosted]
@@ -24,12 +24,12 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
     - run: |	
-        mkdir -p path/to/artifact
-        echo hello > path/to/artifact/world.txt
-        mkdir -p path/to/artifact2
-        echo hello2 > path/to/artifact2/world2.txt
+        mkdir -p to-upload/artifact
+        echo hello > to-upload/artifact/world.txt
+        mkdir -p to-upload/artifact2
+        echo hello2 > to-upload/artifact2/world2.txt
     - name: 'Upload 42k Small files'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
-        name: 'Small-Artifacts-V2'	
-        path: .
+        name: 'Artifacts-V2'	
+        path: to-upload/
