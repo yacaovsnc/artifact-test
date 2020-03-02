@@ -7,9 +7,9 @@ jobs:
     steps:
     # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total	
     - run: |
-        mkdir path/to/artifact1
+        mkdir -p path/to/artifact1
         echo hello > path/to/artifact/world.txt
-        mkdir path/to/artifact2
+        mkdir -p path/to/artifact2
         echo hello2 > path/to/artifact2/world2.txt
     - name: 'Upload 42k Small files'	
       uses: actions/upload-artifact@v1	
@@ -22,9 +22,9 @@ jobs:
     steps:
     # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total	
     - run: |	
-        mkdir path/to/artifact1
+        mkdir -p path/to/artifact1
         echo hello > path/to/artifact/world.txt
-        mkdir path/to/artifact2
+        mkdir -p path/to/artifact2
         echo hello2 > path/to/artifact2/world2.txt
     - name: 'Upload 42k Small files'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
