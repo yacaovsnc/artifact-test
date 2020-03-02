@@ -5,14 +5,13 @@ jobs:
   v1-artifacts:
     runs-on: [ubuntu-latest]
     steps:
-    # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total	
+    - name: checkout
+      uses: actions/checkout@v2
     - run: |
         mkdir -p path/to/artifact
         echo hello > path/to/artifact/world.txt
         mkdir -p path/to/artifact2
         echo hello2 > path/to/artifact2/world2.txt
-    - name: checkout
-      uses: actions/checkout@v2
     - name: 'Upload 42k Small files'	
       uses: actions/upload-artifact@v1	
       with:	
@@ -22,14 +21,13 @@ jobs:
   v2-artifacts:
     runs-on: [ubuntu-latest]
     steps:
-    # Create lots of small files that are split from a single 2MB File, each file is 50 bytes, 42k files (approx) in total	
+    - name: checkout
+      uses: actions/checkout@v2
     - run: |	
         mkdir -p path/to/artifact
         echo hello > path/to/artifact/world.txt
         mkdir -p path/to/artifact2
         echo hello2 > path/to/artifact2/world2.txt
-    - name: checkout
-      uses: actions/checkout@v2
     - name: 'Upload 42k Small files'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
