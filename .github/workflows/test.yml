@@ -11,7 +11,10 @@ jobs:
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
         cd to-upload
-        dd if=/dev/urandom of=large.txt bs=64M count=32
+        for i in {000..5000}
+        do
+            echo hello world! #${i} > "File${i}.txt"
+        done
         cd ..
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
@@ -28,7 +31,10 @@ jobs:
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
         cd to-upload
-        dd if=/dev/urandom of=large.txt bs=64M count=32
+        for i in {000..5000}
+        do
+            echo hello world! #${i} > "File${i}.txt"
+        done
         cd ..
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
