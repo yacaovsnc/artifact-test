@@ -7,5 +7,3 @@ Test
 Test
 
 Testing
-
-Testing
