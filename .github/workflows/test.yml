@@ -10,8 +10,7 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        touch to-upload/bigfile
-        while true ; do printf "Hello world!!"; done | dd of=to-upload/bigfile bs=2048 count=32 iflag=fullblock
+    - run: Hello world this should be a large file | dd of=to-upload/large.txt bs=1G count=1
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
       with:	
@@ -26,8 +25,7 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        touch to-upload/bigfile
-        while true ; do printf "Hello world!!"; done | dd of=to-upload/bigfile bs=2048 count=32 iflag=fullblock
+    - run: Hello world this should be a large file | dd of=to-upload/large.txt bs=1G count=1
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
