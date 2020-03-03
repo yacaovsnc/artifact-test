@@ -3,35 +3,31 @@ name: Test_Artifact_V2
 on: [push]
 jobs:      
   v1-artifacts:
-    runs-on: [ubuntu-latest]
+    runs-on: [self-hosted]
     steps:
-    #- name: checkout
-    #  uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
+        dd if=/dev/zero of=to-upload/outputFile bs=1G count=1
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
       with:	
         name: 'Artifacts-V1'	
         path: to-upload
       
-  #v2-artifacts:
-    #runs-on: [ubuntu-latest]
-    #steps:
-    #- name: checkout
-    #  uses: actions/checkout@v2
-    #- run: |	
-    #    mkdir -p to-upload/artifact
-    #    echo hello > to-upload/artifact/world.txt
-    #    mkdir -p to-upload/artifact2
-    #    echo hello2 > to-upload/artifact2/world2.txt
-    #    mkdir -p to-upload/largev2
-    #    Creating some very large file by repeating the same file lots and lots of times. Each line should be about 125 bytes in size. | head -n 50000000 > to-upload/largev2/big.txt
-    #- name: 'Upload artifact'	
-    #  uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
-    #  with:	
-    #    name: 'Artifacts-V2'	
-    #    path: to-upload/
+  v2-artifacts:
+    runs-on: [self-hosted]
+    steps:
+    - run: |	
+        mkdir -p to-upload/artifact
+        echo hello > to-upload/artifact/world.txt
+        mkdir -p to-upload/artifact2
+        echo hello2 > to-upload/artifact2/world2.txt
+         dd if=/dev/zero of=to-upload/outputFile bs=1G count=1
+    - name: 'Upload artifact'	
+      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
+      with:	
+        name: 'Artifacts-V2'	
+        path: to-upload
