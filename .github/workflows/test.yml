@@ -18,7 +18,7 @@ jobs:
       uses: actions/upload-artifact@v1	
       with:	
         name: 'Artifacts-V1'	
-        path: to-upload/
+        path: to-upload
       
   #v2-artifacts:
     #runs-on: [ubuntu-latest]
