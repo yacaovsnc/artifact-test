@@ -5,8 +5,8 @@ jobs:
   v1-artifacts:
     runs-on: [ubuntu-latest]
     steps:
-    - name: checkout
-      uses: actions/checkout@v2
+    #- name: checkout
+    #  uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
         echo hello > to-upload/artifact/world.txt
