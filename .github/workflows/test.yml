@@ -10,7 +10,7 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        dd if=/dev/zero of=to-upload/outputFile bs=1G count=1
+        Hello world, we are going to repeat this a lot of times | head -n 100000 > to-upload/out.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
       with:	
@@ -25,7 +25,7 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-         dd if=/dev/zero of=to-upload/outputFile bs=1G count=1
+        Hello world, we are going to repeat this a lot of times | head -n 100000 > to-upload/out.txt
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
