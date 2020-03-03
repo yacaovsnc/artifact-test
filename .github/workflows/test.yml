@@ -3,7 +3,7 @@ name: Test_Artifact_V2
 on: [push]
 jobs:      
   v1-artifacts:
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-latest]
     steps:
     - run: |
         mkdir -p to-upload/artifact
@@ -11,7 +11,7 @@ jobs:
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
         cd to-upload
-        dd if=/dev/urandom of=large.txt bs=64M count=16
+        dd if=/dev/urandom of=large.txt bs=64M count=32
         cd ..
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
@@ -20,7 +20,7 @@ jobs:
         path: to-upload
       
   v2-artifacts:
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-latest]
     steps:
     - run: |	
         mkdir -p to-upload/artifact
@@ -28,7 +28,7 @@ jobs:
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
         cd to-upload
-        dd if=/dev/urandom of=large.txt bs=64M count=16
+        dd if=/dev/urandom of=large.txt bs=64M count=32
         cd ..
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
