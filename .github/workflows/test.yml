@@ -10,12 +10,6 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        cd to-upload
-        for i in {000..5000}
-        do
-            echo hello! > "File${i}.txt"
-        done
-        cd ..
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v1	
       with:	
@@ -30,12 +24,6 @@ jobs:
         echo hello > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        cd to-upload
-        for i in {000..5000}
-        do
-            echo hello! > "File${i}.txt"
-        done
-        cd ..
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
