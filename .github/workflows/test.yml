@@ -7,7 +7,7 @@ jobs:
     steps:
     - run: |
         mkdir -p to-upload/artifact
-        echo hello > to-upload/artifact/world.txt
+        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
     - name: 'Upload artifact'	
@@ -21,7 +21,7 @@ jobs:
     steps:
     - run: |	
         mkdir -p to-upload/artifact
-        echo hello > to-upload/artifact/world.txt
+        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
     - name: 'Upload artifact'	
