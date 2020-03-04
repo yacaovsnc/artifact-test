@@ -13,7 +13,7 @@ jobs:
         cd to-upload
         for i in {000..5000}
         do
-            echo hello world! #${i} > "File${i}.txt"
+            echo hello! > "File${i}.txt"
         done
         cd ..
     - name: 'Upload artifact'	
@@ -33,7 +33,7 @@ jobs:
         cd to-upload
         for i in {000..5000}
         do
-            echo hello world! #${i} > "File${i}.txt"
+            echo hello! > "File${i}.txt"
         done
         cd ..
     - name: 'Upload artifact'	
