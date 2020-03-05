@@ -2,26 +2,6 @@
 name: Test_Artifact_V2
 on: [push]
 jobs:      
-  v1-artifacts:
-    runs-on: [self-hosted]
-    steps:
-    - run: |
-        mkdir -p to-upload/artifact
-        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
-        mkdir -p to-upload/artifact2
-        echo hello2 > to-upload/artifact2/world2.txt
-        cd to-upload
-        for i in {000..5000}
-        do
-            echo hello! > "File${i}.txt"
-        done
-        cd ..
-    - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v1	
-      with:	
-        name: 'Artifacts-V1'	
-        path: to-upload
-      
   v2-artifacts:
     runs-on: [self-hosted]
     steps:
