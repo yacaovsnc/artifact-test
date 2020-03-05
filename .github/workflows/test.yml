@@ -16,6 +16,7 @@ jobs:
             echo hello! > "File${i}.txt"
         done
         cd ..
+        export NODE_DEBUG=http
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
