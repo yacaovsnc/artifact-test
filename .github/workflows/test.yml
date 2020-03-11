@@ -50,3 +50,5 @@ jobs:
     - run: |
         cd toDownload
         ls
+        cat artifact/world.txt
+        cat artifact2/world2.txt
