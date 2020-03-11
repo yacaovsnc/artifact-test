@@ -36,8 +36,17 @@ jobs:
             echo hello! > "File${i}.txt"
         done
         cd ..
+        mkdir toDownload
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
         name: 'Artifacts-V2'	
         path: to-upload
+    - name: 'Download artifact'
+      uses: actions/download-artifact@v1
+      with:
+        name: 'Artifacts-V2'
+        path: 'toDownload'
+    - run: |
+        cd toDownload
+        ls
