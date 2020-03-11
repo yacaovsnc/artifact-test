@@ -43,7 +43,7 @@ jobs:
         name: 'Artifacts-V2'	
         path: to-upload
     - name: 'Download artifact'
-      uses: actions/download-artifact@v1
+      uses: konradpabjan/download-artifact@konradpabjan/v2-is-almost-here	
       with:
         name: 'Artifacts-V2'
         path: 'toDownload'
