@@ -41,7 +41,7 @@ jobs:
       uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
       with:	
         name: 'Artifacts-V2'	
-        path: to-upload
+        path: to-upload/invalid-path/
     - name: 'Download artifact'
       uses: konradpabjan/download-artifact@konradpabjan/v2-is-almost-here	
       with:
