@@ -38,12 +38,12 @@ jobs:
         #cd ..
         mkdir toDownload
     - name: 'Upload artifact'	
-      uses: konradpabjan/upload-artifact@konradpabjan/v2-is-almost-here	
+      uses: konradpabjan/upload-artifact@v2-preview
       with:	
         name: 'Artifacts-V2'	
         path: to-upload/invalid-path/
     - name: 'Download artifact'
-      uses: konradpabjan/download-artifact@konradpabjan/v2-is-almost-here	
+      uses: konradpabjan/download-artifact@v2-preview
       with:
         name: 'Artifacts-V2'
         path: 'toDownload'
