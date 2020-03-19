@@ -26,11 +26,11 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
     - run: |	
-        mkdir -p to-upload/artifact
-        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
-        mkdir -p to-upload/artifact2
-        echo hello2 > to-upload/artifact2/world2.txt
-        #cd to-upload
+        mkdir -p ~/to-upload/artifact
+        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > ~/to-upload/artifact/world.txt
+        mkdir -p ~/to-upload/artifact2
+        echo hello2 > ~/to-upload/artifact2/world2.txt
+        #cd ~/to-upload
         #for i in {000..5000}
         #do
         #    echo hello! > "File${i}.txt"
@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:	
         name: 'Artifacts-V2'	
-        path: '!to-upload/artifact2'
+        path: '~/to-upload/artifact2'
     - name: 'Download artifact'
       uses: actions/download-artifact@v2-preview
       with:
