@@ -7,9 +7,9 @@ jobs:
     steps:	
     - run: |	
         mkdir -p to-upload/artifact	
-        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt	
-        mkdir -p to-upload/artifact2	
-        echo hello2 > to-upload/artifact2/world2.txt	
+        #echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt	
+        #mkdir -p to-upload/artifact2	
+        #echo hello2 > to-upload/artifact2/world2.txt	
         #cd to-upload	
         #for i in {000..5000}	
         #do	
@@ -28,11 +28,11 @@ jobs:
       name: my-artifact-name
     steps:
     - run: |
-        cd ${{ github.workspace }}
+        #cd ${{ github.workspace }}
         mkdir -p to-upload/artifact
-        echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
-        mkdir -p to-upload/artifact2
-        echo hello2 > to-upload/artifact2/world2.txt
+        #echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
+        #mkdir -p to-upload/artifact2
+        #echo hello2 > to-upload/artifact2/world2.txt
         #cd ~/to-upload
         #for i in {000..5000}
         #do
@@ -43,15 +43,5 @@ jobs:
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2-preview
       with:	
-        name: ${{ env.name }}-and-more
-        path: ${{ github.workspace }}/to-upload/**/*
-    - name: 'Download artifact'
-      uses: actions/download-artifact@v2-preview
-      with:
-        name: ${{ env.name }}-and-more
-        path: 'toDownload'
-    - run: |
-        cd toDownload
-        ls
-        cat artifact/world.txt
-        cat artifact2/world2.txt
+        name: 'V2-Artifact'
+        path: to-upload
