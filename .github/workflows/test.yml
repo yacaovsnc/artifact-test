@@ -47,4 +47,4 @@ jobs:
       uses: actions/upload-artifact@v2-preview
       with:	
         name: 'V2-Artifact'
-        path: test/*
+        path: ../../test/*
