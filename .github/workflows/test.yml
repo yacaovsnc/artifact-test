@@ -25,7 +25,7 @@ jobs:
         name: 'V2-Artifact'
         path: ~/to-upload/*
     
-    - name: 'Upload artifact'	
+    - name: 'Download artifact'	
       uses: konradpabjan/download-artifact@v2-preview
       with:	
         name: 'V2-Artifact'
