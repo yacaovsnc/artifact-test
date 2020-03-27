@@ -14,7 +14,7 @@ jobs:
         echo hello2 > to-upload/artifact2/world2.txt
         mkdir ~/to-upload
         cd ~/to-upload
-        for i in {000..5000}
+        for i in {000..1000}
         do
             echo hello! > "File${i}.txt"
         done
