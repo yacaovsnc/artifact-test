@@ -8,23 +8,18 @@ jobs:
       name: my-artifact-name
     steps:
     - run: |
-        cd ..
-        cd ..
-        mkdir test
-        cd ${{ github.workspace }}
         mkdir -p to-upload/artifact
         echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
-        echo hello2 > test/world2.txt
+        echo hello2 > to-upload/artifact2/world2.txt
+        mkdir ~/to-upload
         cd ~/to-upload
         for i in {000..5000}
         do
             echo hello! > "File${i}.txt"
         done
-        cd ..
-        mkdir toDownload
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@v2-preview
       with:	
         name: 'V2-Artifact'
-        path: ../../test/*
+        path: ~/to-upload/*
