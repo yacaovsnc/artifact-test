@@ -34,7 +34,7 @@ jobs:
         path: download-dir
     
     - name: 'Upload artifact again'	
-      uses: actions/upload-artifact@v1
+      uses: konradpabjan/upload-artifact@v2-preview
       with:	
         name: 'V1-Artifact-again'
         path: download-dir
