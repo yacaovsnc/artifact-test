@@ -3,7 +3,7 @@ name: Test_Artifact_V2
 on: [push]
 jobs:
   v2-artifacts:
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-latest]
     env:
       name: my-artifact-name
     steps:
@@ -32,9 +32,6 @@ jobs:
       with:	
         name: 'V1-Artifact'
         path: download-dir
-      env:	
-        https_proxy: "http://127.0.0.1:8888"	
-        http_proxy: "http://127.0.0.1:8888"
     
     - name: 'Upload artifact again'	
       uses: konradpabjan/upload-artifact@v2-preview
