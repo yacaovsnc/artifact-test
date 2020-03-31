@@ -28,7 +28,7 @@ jobs:
         path: node_modules/
     
     - name: 'Download artifact'	
-      uses: konradpabjan/download-artifact@v2-preview
+      uses: actions/download-artifact@v1
       with:	
         name: 'V1-Artifact'
         path: download-dir
