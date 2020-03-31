@@ -22,7 +22,7 @@ jobs:
         #dd if=/dev/urandom of=~/to-upload/bigFile.txt bs=64M count=32
         mkdir download-dir
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2-preview
       with:	
         name: 'V1-Artifact'
         path: node_modules/
