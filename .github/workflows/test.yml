@@ -7,27 +7,34 @@ jobs:
     env:
       name: my-artifact-name
     steps:
+    - uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
         echo This is going to be a lot of text. Repeat Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
-        mkdir ~/to-upload
-        cd ~/to-upload
-        for i in {000..1500}
-        do
-            echo hello! > "File${i}.txt"
-        done
-        dd if=/dev/urandom of=~/to-upload/bigFile.txt bs=64M count=32
+        #mkdir ~/to-upload
+        #cd ~/to-upload
+        #for i in {000..1500}
+        #do
+        #    echo hello! > "File${i}.txt"
+        #done
+        #dd if=/dev/urandom of=~/to-upload/bigFile.txt bs=64M count=32
         mkdir download-dir
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@v2-preview
       with:	
         name: 'V2-Artifact'
-        path: ~/to-upload/*
+        path: node_modules/
     
     - name: 'Download artifact'	
       uses: konradpabjan/download-artifact@v2-preview
       with:	
         name: 'V2-Artifact'
+        path: download-dir
+    
+    - name: 'Upload artifact again'	
+      uses: konradpabjan/download-artifact@v2-preview
+      with:	
+        name: 'V2-Artifact-again'
         path: download-dir
