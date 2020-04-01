@@ -29,7 +29,7 @@ jobs:
         name: 'V2-Artifact-Upload'
         path: download-dir1
     
-    - name: 'Upload artifact using v1'	
+    - name: 'Download artifact using v1'	
       uses: actions/download-artifact@v1
       with:	
         name: 'V2-Artifact-Upload'
