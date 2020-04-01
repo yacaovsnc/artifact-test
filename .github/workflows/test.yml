@@ -17,14 +17,14 @@ jobs:
         name: 'V1-Artifact-Upload'
         path: node_modules/
     
-    - name: 'Download artifact using v2'	
-      uses: konradpabjan/download-artifact@v2-preview
+    - name: 'Download artifact using v1'	
+      uses: actions/download-artifact@v1
       with:	
         name: 'V1-Artifact-Upload'
         path: download-dir1
     
-    - name: 'Upload artifact using v2'	
-      uses: konradpabjan/upload-artifact@v2-preview
+    - name: 'Upload artifact using v1'	
+      uses: actions/upload-artifact@v1
       with:	
         name: 'V2-Artifact-Upload'
         path: download-dir1
