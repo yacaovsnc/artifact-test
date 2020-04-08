@@ -11,6 +11,7 @@ jobs:
     - run: |
         mkdir download-dir1
         mkdir download-dir2
+        touch node_modules/empty
     - name: 'Upload artifact using v1'	
       uses: actions/upload-artifact@v1
       with:	
