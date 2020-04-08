@@ -3,7 +3,7 @@ name: Test_Artifact_V2
 on: [push]
 jobs:
   v2-artifacts:
-    runs-on: [windows-latest]
+    runs-on: [ubuntu-latest]
     env:
       name: my-artifact-name
     steps:
