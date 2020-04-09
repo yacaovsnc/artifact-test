@@ -19,7 +19,7 @@ jobs:
         path: node_modules/
     
     - name: 'Download artifact using v2'	
-      uses: konradpabjan/download-artifact@v2-preview
+      uses: actions/download-artifact@v2-preview
       with:	
         name: 'V1-Artifact-Upload'
         path: download-dir1
