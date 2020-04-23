@@ -25,7 +25,7 @@ jobs:
         path: download-dir1
     
     - name: 'Upload artifact using v2'	
-      uses: konradpabjan/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v2-preview
       with:	
         name: 'V2-Artifact-Upload'
         path: download-dir1
