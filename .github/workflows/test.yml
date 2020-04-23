@@ -37,7 +37,7 @@ jobs:
         path: download-dir2
         
     - name: 'Upload artifact using v2'	
-      uses: actions/upload-artifact@v2-preview
+      uses: actions/upload-artifact@v1
       with:	
         name: 'Repo'
-        path: ./
+        path: .
