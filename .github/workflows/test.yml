@@ -36,3 +36,9 @@ jobs:
       with:		
         name: 'V2-Artifact-Upload'	
         path: download-dir2
+        
+    - name: 'Upload artifact using v2'		
+      uses: konradpabjan/upload-artifact@v2-preview	
+      with:		
+        name: 'Repo'	
+        path: .
