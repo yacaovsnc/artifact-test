@@ -20,13 +20,13 @@ jobs:
         path: node_modules/	
 
     - name: 'Download artifact using v2'		
-      uses: konradpabjan/download-artifact@v2-preview	
+      uses: actions/download-artifact@v2-preview	
       with:		
         name: 'V1-Artifact-Upload'	
         path: download-dir1	
 
     - name: 'Upload artifact using v2'		
-      uses: konradpabjan/upload-artifact@v2-preview	
+      uses: actions/upload-artifact@v2-preview	
       with:		
         name: 'V2-Artifact-Upload'	
         path: download-dir1	
@@ -37,8 +37,13 @@ jobs:
         name: 'V2-Artifact-Upload'	
         path: download-dir2
         
+    - name: Display structure of downloaded files
+      run: tree /F
+      shell: pwsh
+      working-directory: download-dir2
+        
     - name: 'Upload artifact using v2'		
-      uses: konradpabjan/upload-artifact@v2-preview	
+      uses: actions/upload-artifact@v2-preview	
       with:		
         name: 'Repo-v2'	
         path: .
