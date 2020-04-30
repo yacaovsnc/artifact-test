@@ -8,32 +8,33 @@ jobs:
       name: my-artifact-name
     steps:
     - uses: actions/checkout@v2
+    
+    - run: |
+        apt-get install tree
         
     - run: |	
-        mkdir download-dir1	
-        mkdir download-dir2	
+        mkdir download-dir-folder	
+        mkdir download-dir-no-folder
         touch node_modules/empty	
     - name: 'Upload artifact using v1'		
-      uses: actions/upload-artifact@v2	
+      uses: actions/upload-artifact@v1	
       with:		
         name: 'V1-Artifact-Upload'	
         path: node_modules/	
 
-    - name: 'Download artifact using v2'		
-      uses: actions/download-artifact@v2
+    - name: 'Download artifact using v2 no folder'		
+      uses: actions/download-artifact@konradpabjan/v2-updates
       with:		
         name: 'V1-Artifact-Upload'	
-        path: download-dir1	
+        path: download-dir-no-folder
+        
+    - run: |
+        tree download-dir-no-folder  
 
-    - name: 'Upload artifact using v2'		
-      uses: actions/upload-artifact@v2
+    - name: 'Download artifact using v2 with folder'		
+      uses: actions/download-artifact@konradpabjan/v2-updates
       with:		
-        name: 'V2-Artifact-Upload'	
-        path: download-dir1	
-
-    - name: 'Download artifact using v1'		
-      uses: actions/download-artifact@v2	
-      with:		
-        name: 'V2-Artifact-Upload'	
-        path: download-dir2
+        name: 'V1-Artifact-Upload'	
+        path: download-dir-folder
+        artifact-folder: true
         
