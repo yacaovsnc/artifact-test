@@ -31,7 +31,7 @@ jobs:
         name: 'V2-Artifact-Upload'	
         
     - run: |
-        tree .
+        tree ./
         cd ..
         cd download-v2-master
 
@@ -41,7 +41,7 @@ jobs:
         name: 'V2-Artifact-Upload'	 
         
     - run: |
-        tree .
+        tree ./
         cd ..
         cd download-v2-updates
     
@@ -50,5 +50,5 @@ jobs:
       with:		
         name: 'V2-Artifact-Upload'	
         
-    - run: tree .
+    - run: tree ./
         
