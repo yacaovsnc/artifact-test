@@ -16,8 +16,8 @@ jobs:
         mkdir download-dir-folder	
         mkdir download-dir-no-folder
         touch node_modules/empty	
-    - name: 'Upload artifact using v1'		
-      uses: actions/upload-artifact@v1	
+    - name: 'Upload artifact using v2'		
+      uses: actions/upload-artifact@v2	
       with:		
         name: 'V1-Artifact-Upload'	
         path: node_modules/	
