@@ -13,9 +13,9 @@ jobs:
         sudo apt-get install tree
         
     - run: |	
-        mkdir download-dir-folder	
-        mkdir download-dir-no-folder
-        mkdir download-dir-no-folder-false
+        mkdir download-v1-dir
+        mkdir download-v2-master
+        mkdir download-v2-updates
         touch node_modules/empty	
     - name: 'Upload artifact using v2'		
       uses: actions/upload-artifact@v2	
@@ -23,29 +23,27 @@ jobs:
         name: 'V2-Artifact-Upload'	
         path: node_modules/	
 
-    - name: 'Download artifact using v2 with default'		
-      uses: actions/download-artifact@konradpabjan/v2-updates
+    - name: 'Download artifact using v1'		
+      uses: actions/download-artifact@v1
       with:		
         name: 'V2-Artifact-Upload'	
-        path: download-dir-no-folder
+        path: download-v1-dir
         
-    - run: tree download-dir-no-folder  
+    - run: tree download-v1-dir  
 
-    - name: 'Download artifact using v2 with artifact-folder true'		
-      uses: actions/download-artifact@konradpabjan/v2-updates
+    - name: 'Download artifact using v2'		
+      uses: actions/download-artifact@v2
       with:		
         name: 'V2-Artifact-Upload'	
-        path: download-dir-folder
-        artifact-folder: true
+        path:  download-v2-master
         
-    - run: tree download-dir-folder
+    - run: tree download-v2-master
     
-    - name: 'Download artifact using v2 with artifact-folder false'		
-      uses: actions/download-artifact@konradpabjan/v2-updates
+    - name: 'Download artifact using v2 latest changes'		
+      uses: actions/download-artifact@konradpabjan/updates-to-v2
       with:		
         name: 'V2-Artifact-Upload'	
-        path: download-dir-no-folder-false
-        artifact-folder: false
+        path: download-v2-updates
         
-    - run: tree download-dir-no-folder-false
+    - run: tree download-v2-updates
         
