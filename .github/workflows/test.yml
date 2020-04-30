@@ -21,29 +21,34 @@ jobs:
       uses: actions/upload-artifact@v2	
       with:		
         name: 'V2-Artifact-Upload'	
-        path: node_modules/	
+        path: node_modules/
+        
+    - run: cd download-v1-dir
 
     - name: 'Download artifact using v1'		
       uses: actions/download-artifact@v1
       with:		
         name: 'V2-Artifact-Upload'	
-        path: download-v1-dir
         
-    - run: tree download-v1-dir  
+    - run: |
+        tree
+        cd ..
+        cd download-v2-master
 
     - name: 'Download artifact using v2'		
       uses: actions/download-artifact@v2
       with:		
-        name: 'V2-Artifact-Upload'	
-        path:  download-v2-master
+        name: 'V2-Artifact-Upload'	 
         
-    - run: tree download-v2-master
+    - run: |
+        tree 
+        cd ..
+        cd download-v2-updates
     
     - name: 'Download artifact using v2 latest changes'		
       uses: actions/download-artifact@konradpabjan/updates-to-v2
       with:		
         name: 'V2-Artifact-Upload'	
-        path: download-v2-updates
         
-    - run: tree download-v2-updates
+    - run: tree
         
