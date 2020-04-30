@@ -15,27 +15,37 @@ jobs:
     - run: |	
         mkdir download-dir-folder	
         mkdir download-dir-no-folder
+        mkdir download-dir-no-folder-false
         touch node_modules/empty	
     - name: 'Upload artifact using v2'		
       uses: actions/upload-artifact@v2	
       with:		
-        name: 'V1-Artifact-Upload'	
+        name: 'V2-Artifact-Upload'	
         path: node_modules/	
 
-    - name: 'Download artifact using v2 no folder'		
+    - name: 'Download artifact using v2 with default'		
       uses: actions/download-artifact@konradpabjan/v2-updates
       with:		
-        name: 'V1-Artifact-Upload'	
+        name: 'V2-Artifact-Upload'	
         path: download-dir-no-folder
         
     - run: tree download-dir-no-folder  
 
-    - name: 'Download artifact using v2 with folder'		
+    - name: 'Download artifact using v2 with artifact-folder true'		
       uses: actions/download-artifact@konradpabjan/v2-updates
       with:		
-        name: 'V1-Artifact-Upload'	
+        name: 'V2-Artifact-Upload'	
         path: download-dir-folder
         artifact-folder: true
         
     - run: tree download-dir-folder
+    
+    - name: 'Download artifact using v2 with artifact-folder false'		
+      uses: actions/download-artifact@konradpabjan/v2-updates
+      with:		
+        name: 'V2-Artifact-Upload'	
+        path: download-dir-no-folder-false
+        artifact-folder: false
+        
+    - run: tree download-dir-no-folder-false
         
