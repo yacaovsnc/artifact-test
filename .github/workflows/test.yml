@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - run: |
-        apt-get install tree
+        sudo apt-get install tree
         
     - run: |	
         mkdir download-dir-folder	
@@ -28,8 +28,7 @@ jobs:
         name: 'V1-Artifact-Upload'	
         path: download-dir-no-folder
         
-    - run: |
-        tree download-dir-no-folder  
+    - run: tree download-dir-no-folder  
 
     - name: 'Download artifact using v2 with folder'		
       uses: actions/download-artifact@konradpabjan/v2-updates
@@ -37,4 +36,6 @@ jobs:
         name: 'V1-Artifact-Upload'	
         path: download-dir-folder
         artifact-folder: true
+        
+    - run: tree download-dir-folder
         
