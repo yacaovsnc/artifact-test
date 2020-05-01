@@ -73,5 +73,3 @@ One more test
 One more test
 
 Test
-
-Test
