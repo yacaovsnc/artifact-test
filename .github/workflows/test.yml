@@ -11,7 +11,7 @@ jobs:
         mkdir download-dir1
         mkdir download-dir2
     - name: 'Upload artifact using v2'	
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:	
         name: 'V2-Artifact-Upload'
         path: node_modules/*
