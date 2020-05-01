@@ -10,26 +10,21 @@ jobs:
     - run: |
         mkdir download-dir1
         mkdir download-dir2
-    - name: 'Upload artifact using v1'	
+    - name: 'Upload artifact using v2'	
       uses: actions/upload-artifact@v1
       with:	
-        name: 'V1-Artifact-Upload'
-        path: node_modules/
+        name: 'V2-Artifact-Upload'
+        path: node_modules/*
     
     - name: 'Download artifact using v2'	
-      uses: konradpabjan/download-artifact@v2-preview
-      with:	
-        name: 'V1-Artifact-Upload'
-        path: download-dir1
-    
-    - name: 'Upload artifact using v2'	
-      uses: konradpabjan/upload-artifact@v2-preview
+      uses: actions/download-artifact@v2
       with:	
         name: 'V2-Artifact-Upload'
-        path: download-dir1
+        path: download-dir
     
-    - name: 'Download artifact using v1'	
-      uses: actions/download-artifact@v1
+    - name: 'Upload artifact using v2 again'	
+      uses: actions/upload-artifact@v2
       with:	
-        name: 'V2-Artifact-Upload'
-        path: download-dir2
+        name: 'V2-Artifact-Upload-Again'
+        path: download-dir/**/bin/*
+    
