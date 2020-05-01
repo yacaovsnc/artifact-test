@@ -1,6 +1,6 @@
 # artifact-test
 
-Testing now
+now
 
 Test
 
