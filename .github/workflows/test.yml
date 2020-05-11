@@ -25,6 +25,6 @@ jobs:
     - name: 'Upload artifact using v2 again'	
       uses: actions/upload-artifact@v2
       with:	
-        name: 'V2-Artifact-Upload-Again'
+        name: 'V2-Artifact-Upload-Again-with-special-ń-character'
         path: download-dir/**/bin/*
     
