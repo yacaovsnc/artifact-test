@@ -15,7 +15,7 @@ jobs:
         do
             echo hello! > "File${i}.txt"
         done
-        dd if=/dev/urandom of=/to-upload/bigFile.txt bs=64M count=32
+        dd if=/dev/urandom of=bigFile.txt bs=64M count=32
         mkdir download-dir
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@konradpabjan/v2-fix-retries
