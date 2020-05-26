@@ -11,17 +11,23 @@ jobs:
         mkdir -p to-upload/artifact2
         echo hello2 > to-upload/artifact2/world2.txt
         cd to-upload
-        for i in {000..5000}
+        for i in {000..100}
         do
             echo hello! > "File${i}.txt"
         done
-        dd if=/dev/urandom of=bigFile.txt bs=64M count=32
+        mkdir =p to-upload2/some-dir
+        echo testing haha > to-upload2/some-dir/abc.txt
+        mkdir =p again/oof
+        echo testing haha again > again/oof/hello.txt
         mkdir download-dir
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
       with:	
         name: 'First Artifact'
-        path: to-upload
+        path: |
+          to-upload
+          to-upload2/
+          again/oof/*
     
     - name: 'Download artifact'	
       uses: actions/download-artifact@v2
