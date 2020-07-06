@@ -26,8 +26,6 @@ jobs:
         name: 'First Artifact'
         path: |
           to-upload
-          to-upload2/
-          again/oof/*
     
     - name: 'Download artifact'	
       uses: actions/download-artifact@v2
