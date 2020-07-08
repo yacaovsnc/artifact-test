@@ -8,24 +8,17 @@ jobs:
     - run: |
         mkdir -p to-upload/artifact
         echo This is going to be a lot of text. Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
-        mkdir -p to-upload/artifact2
-        echo hello2 > to-upload/artifact2/world2.txt
-        cd to-upload
-        for i in {000..100}
-        do
-            echo hello! > "File${i}.txt"
-        done
-        mkdir -p to-upload2/some-dir
-        echo testing haha > to-upload2/some-dir/abc.txt
-        mkdir -p again/oof
-        echo testing haha again > again/oof/hello.txt
-        mkdir download-dir
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
       with:	
         name: 'First Artifact'
-        path: |
-          to-upload
+        path: to-upload/artifact/world.txt
+        
+    - name: 'Delete files'
+      run: |
+        rm -rf to-upload
+        apt get install tree
+        tree .
     
     - name: 'Download artifact'	
       uses: actions/download-artifact@v2
@@ -33,8 +26,6 @@ jobs:
         name: 'First Artifact'
         path: download-dir
     
-    - name: 'Upload artifact again'	
-      uses: actions/upload-artifact@v2
-      with:	
-        name: 'Second Artifact'
-        path: download-dir
+    - name: "show"
+      run: |
+        tree . 
