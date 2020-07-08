@@ -12,7 +12,7 @@ jobs:
         echo Hi again > other/stuff/file.txt
         echo Nope > other/stuff/no.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2
+      uses: konradpabjan/upload-artifact@v2-preview
       with:
         path: |
           to-upload/artifact
