@@ -10,8 +10,7 @@ jobs:
         echo This is going to be a lot of text. Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
-      with:	
-        name: 'First Artifact'
+      with:
         path: to-upload/artifact/world.txt
         
     - name: 'Delete files'
@@ -23,7 +22,6 @@ jobs:
     - name: 'Download artifact'	
       uses: actions/download-artifact@v2
       with:	
-        name: 'First Artifact'
         path: to-upload/artifact/world.txt
     
     - name: "show"
