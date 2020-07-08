@@ -7,12 +7,17 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
-        echo This is going to be a lot of text. Repeat Repeat. The Gzip size should be less than the original > to-upload/artifact/world.txt
+        mkdir -p other/stuff
+        echo Hello > to-upload/artifact/world.txt
+        echo Hi again > other/stuff/file.txt
+        echo Nope > other/stuff/no.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
       with:
-        path: to-upload/artifact/world.txt
-        
+        path: |
+          to-upload/artifact
+          other/stuff
+          !**/no.txt    
     - name: 'Delete files'
       run: |
         rm -rf to-upload
@@ -22,7 +27,7 @@ jobs:
     - name: 'Download artifact'	
       uses: actions/download-artifact@v2
       with:	
-        path: to-upload/artifact/world.txt
+        path: .
     
     - name: "show"
       run: |
