@@ -9,14 +9,15 @@ jobs:
         mkdir -p to-upload/artifact
         mkdir -p other/stuff
         echo Hello > to-upload/artifact/world.txt
+        echo Hi > to-upload/A.txt
         echo Hi again > other/stuff/file.txt
         echo Nope > other/stuff/no.txt
+        echo B > other/stuff/B.txt
     - name: 'Upload artifact'	
       uses: konradpabjan/upload-artifact@v2-preview
       with:
         path: |
           to-upload/artifact
-          other/stuff
           !**/no.txt    
     - name: 'Delete files'
       run: |
