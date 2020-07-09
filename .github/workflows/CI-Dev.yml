@@ -14,7 +14,7 @@ jobs:
         echo Nope > other/stuff/no.txt
         echo B > other/stuff/B.txt
     - name: 'Upload artifact'	
-      uses: konradpabjan/upload-artifact@v2-preview
+      uses: actions/upload-artifact@konradpabjan/multi-path-upload
       with:
         path: |
           to-upload/artifact
