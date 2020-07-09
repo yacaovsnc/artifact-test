@@ -7,19 +7,16 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
-        mkdir -p other/stuff
         echo Hello > to-upload/artifact/world.txt
-        echo Hi > to-upload/A.txt
-        echo Hi again > other/stuff/file.txt
-        echo Nope > other/stuff/no.txt
-        echo B > other/stuff/B.txt
+        echo Hi > to-upload/artifact/A.txt
+        echo Hi again > to-upload/artifact/file.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@konradpabjan/multi-path-upload
       with:
         path: |
-          to-upload/artifact
-          other/*
-          !**/no.txt    
+          to-upload/**/world.txt
+          to-upload/**/file.txt
+          !**/A.txt    
     - name: 'Delete files'
       run: |
         rm -rf to-upload
