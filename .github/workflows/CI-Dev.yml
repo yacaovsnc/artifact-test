@@ -18,6 +18,7 @@ jobs:
       with:
         path: |
           to-upload/artifact
+          other/*
           !**/no.txt    
     - name: 'Delete files'
       run: |
