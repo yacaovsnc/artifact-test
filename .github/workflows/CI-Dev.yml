@@ -11,7 +11,7 @@ jobs:
         echo Hi > to-upload/artifact/A.txt
         echo Hi again > to-upload/artifact/file.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@konradpabjan/multi-path-upload
+      uses: actions/upload-artifact@master
       with:
         path: |
           to-upload/**/world.txt
