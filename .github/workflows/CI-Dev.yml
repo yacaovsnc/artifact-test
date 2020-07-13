@@ -25,4 +25,4 @@ jobs:
         path: download-dir
     
     - name: 'Test output'
-      run: echo ${{steps.testing.outputs.downloadPath}}
+      run: echo ${{steps.testing.outputs.download-path}}
