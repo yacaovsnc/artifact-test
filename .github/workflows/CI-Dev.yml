@@ -22,7 +22,7 @@ jobs:
       id: 'testing'
       uses: actions/download-artifact@konradpabjan/misc-improvements
       with:
-        path: ~/download-dir
+        path: download-dir
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.downloadPath}}
