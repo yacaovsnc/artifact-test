@@ -16,4 +16,8 @@ jobs:
         path: |
           to-upload/**/[BCDE].txt
           to-upload/**/A.txt
-          !**/A.txt    
+          !**/A.txt
+    - name: 'Download artifact'
+      uses: actions/download-artifact@konradpabjan/misc-improvements
+      with:
+        path: .
