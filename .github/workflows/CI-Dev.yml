@@ -21,8 +21,6 @@ jobs:
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@konradpabjan/misc-improvements
-      with:
-        path: download-dir
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.download-path}}
