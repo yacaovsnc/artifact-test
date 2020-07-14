@@ -12,7 +12,7 @@ jobs:
         echo B > to-upload/artifact/B.txt
         echo C > to-upload/artifact/C.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@main
       with:
         path: |
           to-upload/**/[BCDE].txt
