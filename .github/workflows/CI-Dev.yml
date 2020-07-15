@@ -20,7 +20,7 @@ jobs:
           !**/A.txt
     - name: 'Download artifact'
       id: 'testing'
-      uses: actions/download-artifact@main
+      uses: actions/download-artifact@v2.0.1
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.download-path}}
