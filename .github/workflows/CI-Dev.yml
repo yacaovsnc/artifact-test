@@ -13,7 +13,7 @@ jobs:
       with:
         path: |
           empty-dir
-        if-no-files-found: error
+        if-no-files-found: suppress
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@v2
