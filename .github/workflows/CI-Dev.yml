@@ -7,12 +7,12 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
-        mkdir download-dir
+        mkdir empty-dir
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@konradpabjan/no-files-found
       with:
         path: |
-          to-upload
+          empty-dir
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@v2
