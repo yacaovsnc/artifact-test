@@ -8,16 +8,11 @@ jobs:
     - run: |
         mkdir -p to-upload/artifact
         mkdir download-dir
-        echo A > to-upload/artifact/A.txt
-        echo B > to-upload/artifact/B.txt
-        echo C > to-upload/artifact/C.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@main
+      uses: actions/upload-artifact@konradpabjan/no-files-found
       with:
         path: |
-          to-upload/**/[BCDE].txt
-          to-upload/**/A.txt
-          !**/A.txt
+          to-upload
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@v2
