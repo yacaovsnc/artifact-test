@@ -15,7 +15,9 @@ jobs:
           ~/to-upload/artifact
     - name: 'Download artifact'
       id: 'testing'
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@konradpabjan/tilde
+      with:
+        path: ~/some/path/with/tilde/expansion
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.download-path}}
