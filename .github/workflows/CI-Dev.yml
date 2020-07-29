@@ -2,18 +2,17 @@ name: Test_Artifact_V2
 on: [push]
 jobs:
   v2-artifacts:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - run: |
         mkdir -p to-upload/artifact
         mkdir empty-dir
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@konradpabjan/no-files-found
+      uses: actions/upload-artifact@v2
       with:
         path: |
-          empty-dir
-        if-no-files-found: invalid
+          ~/
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@v2
