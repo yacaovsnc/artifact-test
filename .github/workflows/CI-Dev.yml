@@ -6,13 +6,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        mkdir -p to-upload/artifact
+        mkdir -p ~/to-upload/artifact
         mkdir empty-dir
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
       with:
         path: |
-          ~/
+          ~/to-upload/artifact
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@v2
