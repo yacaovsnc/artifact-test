@@ -7,7 +7,7 @@ jobs:
     - uses: actions/checkout@v2
     - run: |
         mkdir -p ~/to-upload/artifact
-        mkdir empty-dir
+        echo "Hi there!" > ~/to-upload/artifact/test.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@v2
       with:
