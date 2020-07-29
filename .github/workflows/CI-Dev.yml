@@ -16,6 +16,9 @@ jobs:
     - name: 'Download artifact'
       id: 'testing'
       uses: actions/download-artifact@konradpabjan/tilde
+      with:
+        name: artifact
+        path: ~/some/path/with/tile/expansion
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.download-path}}
