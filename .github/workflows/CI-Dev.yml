@@ -6,19 +6,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        mkdir -p ~/to-upload/artifact
-        echo "Hi there!" > ~/to-upload/artifact/test.txt
+        mkdir -p to-upload/artifact
+        mkdir empty-dir
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@konradpabjan/no-files-found
       with:
         path: |
-          ~/to-upload/artifact
+          empty-dir
+        if-no-files-found: ignore
     - name: 'Download artifact'
       id: 'testing'
-      uses: actions/download-artifact@konradpabjan/tilde
-      with:
-        name: artifact
-        path: ~/some/path/with/tile/expansion
+      uses: actions/download-artifact@v2
     
     - name: 'Test output'
       run: echo ${{steps.testing.outputs.download-path}}
