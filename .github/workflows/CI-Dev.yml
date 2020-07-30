@@ -4,19 +4,21 @@ jobs:
   v2-artifacts:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - run: |
-        mkdir -p to-upload/artifact
-        mkdir empty-dir
+        echo 'hello A' > A.txt
+        echo 'hello a' > a.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@konradpabjan/no-files-found
+      uses: actions/upload-artifact@v2
       with:
-        path: |
-          empty-dir
-        if-no-files-found: ignore
+        path: './'
     - name: 'Download artifact'
-      id: 'testing'
       uses: actions/download-artifact@v2
+      with:
+        path: download-dir
     
-    - name: 'Test output'
-      run: echo ${{steps.testing.outputs.download-path}}
+    - name: 'Test'
+      run: |
+        ls -R
+        cat download-dir/A.txt
+        cat download-dir/a.txt
+    
