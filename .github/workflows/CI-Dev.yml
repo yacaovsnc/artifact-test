@@ -7,8 +7,9 @@ jobs:
     - run: |
         echo 'hello A' > A.txt
         echo 'hello a' > a.txt
+        echo 'hello b' > b.txt
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@konradpabjan/case-insensitivity
       with:
         path: './'
     - name: 'Download artifact'
