@@ -9,11 +9,11 @@ jobs:
         echo 'hello b' > b.txt
         dd if=/dev/urandom of=sample.txt bs=64M count=16
     - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@main
       with:
         path: './'
     - name: 'Download artifact'
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v2.0.3
       with:
-        path: download-dir
+        path: ~/download-dir
     
