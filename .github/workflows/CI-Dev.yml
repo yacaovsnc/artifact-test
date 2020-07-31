@@ -6,7 +6,6 @@ jobs:
     steps:
     - run: |
         echo 'hello A' > A.txt
-        echo 'hello a' > a.txt
         echo 'hello b' > b.txt
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@konradpabjan/case-insensitivity
