@@ -7,6 +7,7 @@ jobs:
     - run: |
         echo 'hello A' > A.txt
         echo 'hello b' > b.txt
+        dd if=/dev/urandom of=sample.txt bs=64M count=16
     - name: 'Upload artifact'	
       uses: actions/upload-artifact@konradpabjan/case-insensitivity
       with:
