@@ -17,9 +17,3 @@ jobs:
       with:
         path: download-dir
     
-    - name: 'Test'
-      run: |
-        ls -R
-        cat download-dir/A.txt
-        cat download-dir/a.txt
-    
