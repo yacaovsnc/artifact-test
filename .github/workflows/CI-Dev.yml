@@ -1,16 +1,35 @@
 name: Test_Artifact_V2
 on: [push]
 jobs:
-  v2-artifacts:
+  Upload:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        filename: [file1,file2]
     steps:
     - run: |
-        echo 'hello A' > A.txt
-        echo 'hello b' > b.txt
-        dd if=/dev/urandom of=sample.txt bs=64M count=4
-        mkdir empty
-    - name: 'Upload artifact'	
-      uses: actions/upload-artifact@v2.1.4
+        mkdir testfloder
+        echo hey >> testfolder/{{matrix.filename}}.txt
+    - name: Upload all
+      uses: actions/upload-artifact@v2
       with:
-        path: './empty'
-    
+        path: ./
+
+  Create_PR:
+    needs: Upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all
+        uses: actions/download-artifact@v2
+      - name: Move the content of the directory to the root
+        run: |
+          rsync -a artifact/* ./
+          rm -d -r artifact
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: UploadTest
+          title: "[AUTO] upload test"
+          labels: UploadTest
+          branch: "UploadTest"
