@@ -8,7 +8,7 @@ jobs:
         filename: [file1,file2]
     steps:
     - run: |
-        mkdir testfloder
+        mkdir testfolder
         echo hey >> testfolder/{{matrix.filename}}.txt
     - name: Upload all
       uses: actions/upload-artifact@v2
