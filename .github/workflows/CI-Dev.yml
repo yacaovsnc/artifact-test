@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          apt install tree
+          sudo apt install tree
       - name: Download all
         uses: actions/download-artifact@v2
       - name: Move the content of the directory to the root
