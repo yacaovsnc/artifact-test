@@ -3,18 +3,22 @@ on: [push]
 jobs:
   Upload:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        filename: [file1,file2]
     steps:
     - run: |
-        mkdir testfolder
-        echo hey >> testfolder/${{matrix.filename}}.txt
+        mkdir fa1_publish_output
+        mkdir fa1_publish_output/fa1app
+        mdkir fa2_publish_output
+        mdkir fa2_publish_output/fa2app
+        echo "hello 1" > fa1_publish_output/host.json
+        echo "hello 2" > fa2_publish_output/host.json
+        echo "hi 1" > fa1_publish_output/fa1app/test.txt
+        echo "hi 2" > fa2_publish_output/fa2app/test.txt
     - name: Upload all
       uses: actions/upload-artifact@v2
       with:
-        path: ./
-
+        path: |
+          fa1_publish_output
+          fa2_publish_output
   Verify_Artifact:
     needs: Upload
     runs-on: ubuntu-latest
