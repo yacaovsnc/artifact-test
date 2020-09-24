@@ -18,8 +18,8 @@ jobs:
       with:
         name: FunctionApps
         path: |
-          fa1_publish_output
-          fa2_publish_output
+          fa1_app
+          fa2_app
   Verify_Artifact:
     needs: Upload
     runs-on: ubuntu-latest
