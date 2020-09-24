@@ -7,8 +7,8 @@ jobs:
     - run: |
         mkdir fa1_publish_output
         mkdir fa1_publish_output/fa1app
-        mdkir fa2_publish_output
-        mdkir fa2_publish_output/fa2app
+        mkdir fa2_publish_output
+        mkdir fa2_publish_output/fa2app
         echo "hello 1" > fa1_publish_output/host.json
         echo "hello 2" > fa2_publish_output/host.json
         echo "hi 1" > fa1_publish_output/fa1app/test.txt
