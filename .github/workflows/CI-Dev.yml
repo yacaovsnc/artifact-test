@@ -20,14 +20,4 @@ jobs:
         path: |
           fa1_app
           fa2_app
-  Verify_Artifact:
-    needs: Upload
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          sudo apt install tree
-      - name: Download all
-        uses: actions/download-artifact@v2
-      - name: Display contents of artifact
-        run: |
-          tree .
+        retention-days: 15 
