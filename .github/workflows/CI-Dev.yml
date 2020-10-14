@@ -13,6 +13,11 @@ jobs:
         echo "hello 2" > fa2_app/host.json
         echo "hi 1" > fa1_app/fa1/test.txt
         echo "hi 2" > fa2_app/fa2/test.txt
+    - name: This should skip
+      if: ${{ github.event_name == 'pull_request'}}
+      run: echo Some step that should be skipped
+    - name: Test
+      run: echo Hi there
     - name: Upload all
       uses: actions/upload-artifact@v2
       with:
