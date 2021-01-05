@@ -2,7 +2,7 @@ name: Test_Artifact_V2
 on: [push]
 jobs:
   Upload:
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
     steps:
     - run: |
         mkdir fa1_app
