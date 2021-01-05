@@ -1,7 +1,7 @@
 name: Test_Artifact_V2
 on: [push]
 jobs:
-  Upload:
+  Job With Artifact Upload:
     runs-on: Ubuntu-20.04
     steps:
     - run: |
@@ -25,4 +25,11 @@ jobs:
         path: |
           fa1_app
           fa2_app
-        retention-days: 15 
+        retention-days: 15
+  Job With Artifact Download:
+    runs-on: Ubuntu-20.04
+    steps:
+    - name: Download all
+      uses: actions/download-artifact@v2
+      with:
+        name: My-Artifact
