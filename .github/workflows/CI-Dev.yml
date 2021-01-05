@@ -21,7 +21,7 @@ jobs:
     - name: Upload all
       uses: actions/upload-artifact@v2
       with:
-        name: FunctionApps
+        name: My-Artifact
         path: |
           fa1_app
           fa2_app
