@@ -2,29 +2,20 @@ name: Test_Artifact_V2
 on: workflow_dispatch
 jobs:
   Job-With-Artifact-Upload:
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - run: |
-        mkdir fa1_app
-        mkdir fa1_app/fa1
-        mkdir fa2_app
-        mkdir fa2_app/fa2
-        echo "hello 1" > fa1_app/host.json
-        echo "hello 2" > fa2_app/host.json
-        echo "hi 1" > fa1_app/fa1/test.txt
-        echo "hi 2" > fa2_app/fa2/test.txt
-    - name: This should skip
-      if: ${{ github.event_name == 'pull_request'}}
-      run: echo Some step that should be skipped
-    - name: Test
-      run: echo Hi there
+        mkdir content
+        echo "hello 1" > content/file1.txt
+        echo "hello 2" > content/file2.txt
+        echo "bad file" > content/file3.txt
     - name: Upload all
       uses: actions/upload-artifact@v2
       with:
         name: My-Artifact
         path: |
-          fa1_app
-          fa2_app
+          content/*.txt
+          !content/file3.txt
         retention-days: 15
   Job-With-Artifact-Download:
     runs-on: Ubuntu-20.04
@@ -34,3 +25,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: My-Artifact
+    - name: Display contents
+      run: |
+        find 
