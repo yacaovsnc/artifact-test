@@ -58,14 +58,4 @@ Test #27
 
 Test Again
 
-Test Again
-
-Can I get a 500?
-
-Plz 500?
-
-Gimme a 500 plz
-
-One more test
-
-One more test
+[Artifact link](https://github.com/konradpabjan/artifact-test/suites/2116698751/artifacts/43120004)
