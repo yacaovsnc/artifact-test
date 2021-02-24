@@ -58,4 +58,4 @@ Test #27
 
 Test Again
 
-[Artifact link](https://github.com/konradpabjan/artifact-test/suites/2116698751/artifacts/43120004)
+Link https://github.com/konradpabjan/artifact-test/suites/2116698751/artifacts/43120004
