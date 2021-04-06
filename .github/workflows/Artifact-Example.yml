@@ -10,7 +10,7 @@ jobs:
         echo "hello 2" > content/file2.txt
         echo "bad file" > content/file3.txt
     - name: Upload all
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2.2.3
       with:
         name: My-Artifact
         path: |
@@ -22,7 +22,7 @@ jobs:
     needs: Job-With-Artifact-Upload
     steps:
     - name: Download all
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v2.0.9
       with:
         name: My-Artifact
     - name: Display contents
