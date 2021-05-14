@@ -9,13 +9,23 @@ jobs:
         echo "hello 1" > content/file1.txt
         echo "hello 2" > content/file2.txt
         echo "bad file" > content/file3.txt
+    - name: Upload First
+      uses: actions/upload-artifact@v2
+      with:
+        name: an-artifact
+        path: content/file1.txt
+        retention-days: 15
+    - name: Upload Second
+      uses: actions/upload-artifact@v2
+      with:
+        name: another-artifact
+        path: content/file1.txt
+        retention-days: 15
     - name: Upload all
       uses: actions/upload-artifact@v2
       with:
-        name: My-Artifact
-        path: |
-          content/*.txt
-          !content/file3.txt
+        name: my-artifact
+        path: content/file1.txt
         retention-days: 15
   Job-With-Artifact-Download:
     runs-on: Ubuntu-20.04
