@@ -12,7 +12,7 @@ jobs:
     - name: Upload First
       uses: actions/upload-artifact@v2
       with:
-        name: an-artifact
+        name: 'artifact name'
         path: content/file1.txt
         retention-days: 15
       env:
