@@ -17,7 +17,7 @@ jobs:
         
         wc -c content/*
     - name: Upload First
-      uses: actions/upload-artifact@v2
+      uses: konradpabjan/upload-artifact@main
       with:
         name: 'artifact name'
         path: content/file1.txt
@@ -25,7 +25,7 @@ jobs:
       env:
         ACTIONS_STEP_DEBUG: true
     - name: Upload Second
-      uses: actions/upload-artifact@v2
+      uses: konradpabjan/upload-artifact@main
       with:
         name: another-artifact
         path: content/file2.txt
