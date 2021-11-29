@@ -14,6 +14,8 @@ jobs:
         done
         
         echo "bad file" > content/file3.txt
+        
+        wc -c content/*
     - name: Upload First
       uses: actions/upload-artifact@v2
       with:
