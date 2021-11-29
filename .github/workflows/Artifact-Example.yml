@@ -26,13 +26,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: another-artifact
-        path: content/file1.txt
+        path: content/file2.txt
         retention-days: 15
-    - name: Upload all
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: content/file1.txt
-        retention-days: 15
-      env:
-        ACTIONS_STEP_DEBUG: true
