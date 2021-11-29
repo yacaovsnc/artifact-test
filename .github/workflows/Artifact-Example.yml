@@ -28,5 +28,5 @@ jobs:
       uses: konradpabjan/upload-artifact@main
       with:
         name: 'artifact-name'
-        path: content/file2.txt
+        path: content/file3.txt
         retention-days: 15
