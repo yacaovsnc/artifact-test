@@ -6,7 +6,7 @@ jobs:
     steps:
     - run: |
         mkdir content
-        echo "hello 1" > content/file1.txt
+        head -c 10000000 </dev/urandom >content/file1.txt
         echo "hello 2" > content/file2.txt
         echo "bad file" > content/file3.txt
     - name: Upload First
