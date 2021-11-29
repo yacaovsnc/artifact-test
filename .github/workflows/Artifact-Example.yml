@@ -27,6 +27,6 @@ jobs:
     - name: Upload Second
       uses: konradpabjan/upload-artifact@main
       with:
-        name: another-artifact
+        name: 'artifact name'
         path: content/file2.txt
         retention-days: 15
