@@ -6,8 +6,13 @@ jobs:
     steps:
     - run: |
         mkdir content
-        head -c 10000000 </dev/urandom >content/file1.txt
-        echo "hello 2" > content/file2.txt
+        head -c 1000000 </dev/urandom >content/file1.txt
+        
+        for i in {0..10000}
+        do
+          echo "Hello world repeating multiple times" >> content/file2.txt
+        done
+        
         echo "bad file" > content/file3.txt
     - name: Upload First
       uses: actions/upload-artifact@v2
