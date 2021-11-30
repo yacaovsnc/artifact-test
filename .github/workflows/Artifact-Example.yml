@@ -19,7 +19,9 @@ jobs:
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: my-artifact
+        name: |
+          multi-line
+          artifact name
         path: content/file2.txt
         retention-days: 15
       env:
