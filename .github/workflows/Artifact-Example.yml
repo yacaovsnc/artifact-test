@@ -19,12 +19,8 @@ jobs:
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: |
-          name
-          with
-          multiple lines
-          because ppl do weird things
-        path: content/file1.txt
+        name: my-artifact
+        path: content/file2.txt
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
