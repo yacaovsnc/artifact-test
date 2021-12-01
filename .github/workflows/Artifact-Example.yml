@@ -13,14 +13,15 @@ jobs:
           echo "Hello world repeating multiple times" >> content/file2.txt
         done
         
+        echo "hi there" > content/abc$'\n'def
         echo "bad file" > content/file3.txt
         
         wc -c content/*
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: my-name;aa
-        path: content/file2.txt
+        name: my-artifact
+        path: content/*
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
