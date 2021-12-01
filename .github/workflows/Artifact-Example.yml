@@ -20,7 +20,7 @@ jobs:
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: my-artifact
+        name: my-artifact**lol
         path: content/*
         retention-days: 15
       env:
