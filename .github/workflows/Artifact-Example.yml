@@ -19,7 +19,7 @@ jobs:
 
         
         echo "path1=$(ls |head -n 1)" >> $GITHUB_ENV
-        echo "path2=content/file3.txt" >> $GITHUB_ENV
+        echo "path2=test/file3.txt" >> $GITHUB_ENV
         
         wc -c content/*
     - name: Upload First
