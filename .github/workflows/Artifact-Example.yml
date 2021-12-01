@@ -12,7 +12,7 @@ jobs:
       uses: konradpabjan/upload-artifact@main
       with:
         name: artifact
-        path: testing/file.txt
+        path: testing/file.txt  # is this a comment
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
