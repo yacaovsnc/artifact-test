@@ -15,13 +15,16 @@ jobs:
         
         echo "hi there" > content/def
         echo "bad file" > content/file3.txt
+
+        
+        echo "file=$(ls |head -n 1)" >> $GITHUB_ENV
         
         wc -c content/*
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
         name: ${{ github.event.repository.name }}
-        path: content/*
+        path: ${{ env.file }}
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
