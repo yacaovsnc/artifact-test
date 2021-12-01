@@ -5,36 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        mkdir content
-        mkdir test
-        head -c 100000 </dev/urandom >content/file1.txt
-        
-        for i in {0..5000}
-        do
-          echo "Hello world repeating multiple times" >> content/file2.txt
-        done
-        
-        echo "hi there" > content/def
-        echo "bad file" > test/file3.txt
-
-        
-        echo "path1=$(ls |head -n 1)" >> $GITHUB_ENV
-        echo "path2=test/file3.txt" >> $GITHUB_ENV
-        
-        wc -c content/*
-    - name: Upload First
+        mkdir testing
+        echo "This is a file to upload" > testing/file.txt
+        echo "artifactPath=testing/file.txt" >> $GITHUB_ENV
+    - name: Upload artifact
       uses: konradpabjan/upload-artifact@main
       with:
-        name: ${{ github.event.repository.name }}
-        path: |
-          ${{ env.path1 }}
-          ${{ env.path2 }}
+        name: artifact
+        path: ${{ env.artifactPath }}
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
-    - name: Upload Second
-      uses: konradpabjan/upload-artifact@main
-      with:
-        name: 'artifact-name'
-        path: content/file3.txt
-        retention-days: 15
