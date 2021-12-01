@@ -6,9 +6,9 @@ jobs:
     steps:
     - run: |
         mkdir content
-        head -c 1000000 </dev/urandom >content/file1.txt
+        head -c 100000 </dev/urandom >content/file1.txt
         
-        for i in {0..50000}
+        for i in {0..5000}
         do
           echo "Hello world repeating multiple times" >> content/file2.txt
         done
@@ -20,7 +20,7 @@ jobs:
     - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: my-artifact
+        name: ${{ github.event.repository.name }}
         path: content/*
         retention-days: 15
       env:
