@@ -12,7 +12,7 @@ jobs:
       uses: konradpabjan/upload-artifact@main
       with:
         name: artifact
-        path: ${{ env.artifactPath }}
+        path: testing/file.txt
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
