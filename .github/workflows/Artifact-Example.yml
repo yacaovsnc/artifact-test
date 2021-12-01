@@ -6,13 +6,12 @@ jobs:
     steps:
     - run: |
         mkdir testing
-        echo "This is a file to upload" > testing/file.txt
-        echo "artifactPath=testing/file.txt" >> $GITHUB_ENV
+        echo "This is a file to upload" > testing/file.123.txt
     - name: Upload artifact
       uses: konradpabjan/upload-artifact@main
       with:
-        name: arti**fact
-        path: testing/file.txt  # is this a comment
+        name: artifact
+        path: testing/file.123.txt
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
