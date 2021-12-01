@@ -6,12 +6,15 @@ jobs:
     steps:
     - run: |
         mkdir testing
-        echo "This is a file to upload" > testing/file.123.txt
+        cd testing
+        mkdir file.abcdefg
+        cd ..
+        echo "This is a file to upload" > testing/file.abcdefg/test-123.txt
     - name: Upload artifact
       uses: konradpabjan/upload-artifact@main
       with:
         name: artifact
-        path: testing/file.123.txt
+        path: testing/*
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
