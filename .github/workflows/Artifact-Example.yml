@@ -11,7 +11,7 @@ jobs:
     - name: Upload artifact
       uses: konradpabjan/upload-artifact@main
       with:
-        name: artifact
+        name: arti**fact
         path: testing/file.txt  # is this a comment
         retention-days: 15
       env:
