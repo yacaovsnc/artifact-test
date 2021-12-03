@@ -4,18 +4,11 @@ jobs:
   Job-With-Artifact-Upload:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - name: Create 8000MB artifact
+      run: |
         mkdir content
         mkdir test
-        head -c 1000000000 </dev/urandom >content/file1.txt
-        
-        for i in {0..5000}
-        do
-          echo "Hello world repeating multiple times" >> content/file2.txt
-        done
-        
-        echo "hi there" > content/def
-        echo "bad file" > test/file3.txt
+        head -c 8000000000 </dev/urandom >content/file1.txt
         
         wc -c content/*
     - name: Upload First
