@@ -7,9 +7,9 @@ jobs:
     - run: |
         mkdir content
         mkdir test
-        head -c 100000 </dev/urandom >content/file1.txt
+        head -c 1000000 </dev/urandom >content/file1.txt
         
-        for i in {0..50000}
+        for i in {0..500000}
         do
           echo "Hello world repeating multiple times" >> content/file2.txt
         done
@@ -28,9 +28,3 @@ jobs:
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
-    - name: Upload Second
-      uses: konradpabjan/upload-artifact@main
-      with:
-        name: 'artifact-name'
-        path: content/file3.txt
-        retention-days: 15
