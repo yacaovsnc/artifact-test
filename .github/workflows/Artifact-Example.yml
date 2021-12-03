@@ -7,7 +7,7 @@ jobs:
     - run: |
         mkdir content
         mkdir test
-        head -c 100000000 </dev/urandom >content/file1.txt
+        head -c 1000000000 </dev/urandom >content/file1.txt
         
         for i in {0..5000}
         do
@@ -24,7 +24,10 @@ jobs:
         name: my-artifact
         path: |
           content/file1.txt
-          content/file2.txt
         retention-days: 1
       env:
         ACTIONS_STEP_DEBUG: true
+        
+    - uses: geekyeggo/delete-artifact@v1
+      with:
+        name: my-artifact
