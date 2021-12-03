@@ -4,11 +4,12 @@ jobs:
   Job-With-Artifact-Upload:
     runs-on: ubuntu-latest
     steps:
-    - name: Create 8000MB zip file
+    - name: Create 2 8000MB zip files
       run: |
         mkdir content
         mkdir test
         head -c 8000000000 </dev/urandom >content/file1.zip
+        head -c 8000000000 </dev/urandom >content/file2.zip
         
         wc -c content/*
     - name: Upload First
@@ -17,6 +18,7 @@ jobs:
         name: my-artifact
         path: |
           content/file1.zip
+          content/file2.zip
         retention-days: 1
       env:
         ACTIONS_STEP_DEBUG: true
