@@ -16,7 +16,7 @@ jobs:
       with:
         name: my-artifact
         path: |
-          content/file1.txt
+          content/file1.zip
         retention-days: 1
       env:
         ACTIONS_STEP_DEBUG: true
