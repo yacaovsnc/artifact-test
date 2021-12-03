@@ -5,16 +5,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        mkdir testing
-        cd testing
-        mkdir file.abcdefg
-        cd ..
-        echo "This is a file to upload" > testing/file.abcdefg/test-123.txt
-    - name: Upload artifact
+        mkdir content
+        mkdir test
+        head -c 100000 </dev/urandom >content/file1.txt
+        
+        for i in {0..50000}
+        do
+          echo "Hello world repeating multiple times" >> content/file2.txt
+        done
+        
+        echo "hi there" > content/def
+        echo "bad file" > test/file3.txt
+        
+        wc -c content/*
+    - name: Upload First
       uses: konradpabjan/upload-artifact@main
       with:
-        name: artifact
-        path: testing/*
+        name: my-artifact
+        path: |
+          content/file1.txt
+          content/file2.txt
         retention-days: 15
       env:
         ACTIONS_STEP_DEBUG: true
+    - name: Upload Second
+      uses: konradpabjan/upload-artifact@main
+      with:
+        name: 'artifact-name'
+        path: content/file3.txt
+        retention-days: 15
