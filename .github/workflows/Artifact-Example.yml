@@ -8,8 +8,8 @@ jobs:
       run: |
         mkdir content
         mkdir test
-        head -c 8000000 </dev/urandom >content/file1.zip
-        head -c 8000000 </dev/urandom >content/file2.zip
+        head -c 80000000 </dev/urandom >content/file1.zip
+        head -c 80000000 </dev/urandom >content/file2.zip
         
         wc -c content/*
     - name: Upload First
@@ -33,11 +33,11 @@ jobs:
       with:
         name: my-artifact
         path: |
-          content/file3.zip
+          content/file1.zip
         retention-days: 1
   
   Artifact-Download:
-    runs-on: codespaces-prebuild
+    runs-on: ubuntu-latest
     needs: Artifact-Upload
     steps:
     - name: Download artifact
