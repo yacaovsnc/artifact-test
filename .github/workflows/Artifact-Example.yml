@@ -39,4 +39,4 @@ jobs:
     needs: Artifact-Upload
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v2 
+      uses: konradpabjan/download-artifact@main 
