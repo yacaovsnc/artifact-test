@@ -13,7 +13,7 @@ jobs:
         
         wc -c content/*
     - name: Upload First
-      uses: actions/upload-artifact@v2
+      uses: konradpabjan/upload-artifact@main
       with:
         name: my-artifact
         path: |
