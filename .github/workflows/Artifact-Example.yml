@@ -4,12 +4,12 @@ jobs:
   Job-With-Artifact-Upload:
     runs-on: ubuntu-latest
     steps:
-    - name: Create 2 8000MB zip files
+    - name: Create 2zip files
       run: |
         mkdir content
         mkdir test
-        head -c 8000000000 </dev/urandom >content/file1.zip
-        head -c 8000000000 </dev/urandom >content/file2.zip
+        head -c 800000000 </dev/urandom >content/file1.zip
+        head -c 800000000 </dev/urandom >content/file2.zip
         
         wc -c content/*
     - name: Upload First
