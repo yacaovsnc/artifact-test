@@ -29,7 +29,7 @@ jobs:
     - name: Upload Second
       uses: konradpabjan/upload-artifact@main
       with:
-        name: my-artifact
+        name: my-artifact2
         path: |
           content/*
         retention-days: 1
