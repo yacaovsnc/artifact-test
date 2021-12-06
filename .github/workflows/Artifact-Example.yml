@@ -8,8 +8,14 @@ jobs:
       run: |
         mkdir content
         mkdir test
-        head -c 80000000 </dev/urandom >content/file1.zip
-        head -c 80000000 </dev/urandom >content/file2.zip
+        head -c 800000000 </dev/urandom >content/file1.zip
+        head -c 800000000 </dev/urandom >content/file2.zip
+        
+        echo "testing" > content/file3.txt
+        echo "testing" > content/file4.txt
+        echo "testing" > content/file5.txt
+        echo "testing" > content/file6.txt
+        echo "testing" > content/file7.txt
         
         wc -c content/*
     - name: Upload First
@@ -17,7 +23,7 @@ jobs:
       with:
         name: my-artifact
         path: |
-          content/file1.zip
+          content/*
         retention-days: 1
         
     - name: Upload Second
