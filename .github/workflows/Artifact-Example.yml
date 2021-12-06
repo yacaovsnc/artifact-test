@@ -1,15 +1,15 @@
 name: Test_Artifact_V2
 on: workflow_dispatch
 jobs:
-  Job-With-Artifact-Upload:
+  Artifact-Upload:
     runs-on: ubuntu-latest
     steps:
     - name: Create 2zip files
       run: |
         mkdir content
         mkdir test
-        head -c 800000000 </dev/urandom >content/file1.zip
-        head -c 800000000 </dev/urandom >content/file2.zip
+        head -c 8000000 </dev/urandom >content/file1.zip
+        head -c 8000000 </dev/urandom >content/file2.zip
         
         wc -c content/*
     - name: Upload First
@@ -18,11 +18,27 @@ jobs:
         name: my-artifact
         path: |
           content/file1.zip
-          content/file2.zip
         retention-days: 1
-      env:
-        ACTIONS_STEP_DEBUG: true
         
-    - uses: geekyeggo/delete-artifact@v1
+    - name: Upload Second
+      uses: konradpabjan/upload-artifact@main
       with:
         name: my-artifact
+        path: |
+          content/file2.zip
+        retention-days: 1
+        
+    - name: Upload third
+      uses: konradpabjan/upload-artifact@main
+      with:
+        name: my-artifact
+        path: |
+          content/file3.zip
+        retention-days: 1
+  
+  Artifact-Download:
+    runs-on: codespaces-prebuild
+    needs: Artifact-Upload
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v2 
