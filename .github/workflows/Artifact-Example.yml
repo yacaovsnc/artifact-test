@@ -8,10 +8,10 @@ jobs:
       run: |
         mkdir content
         mkdir test
-        head -c 300000000 </dev/urandom >content/file8.zip
-        head -c 300000000 </dev/urandom >content/file2.zip
+        head -c 3000000 </dev/urandom >content/file8.zip
+        head -c 3000000 </dev/urandom >content/file2.zip
         
-        echo "testing" > content/file3.txt
+        echo "testing" > content/file*3.txt
         echo "testing" > content/file4.txt
         echo "testing" > content/file5.txt
         echo "testing" > content/file6.txt
