@@ -7,29 +7,12 @@ jobs:
     - name: Create 2zip files
       run: |
         mkdir content
-        mkdir test
-        head -c 3000000 </dev/urandom >content/file8.zip
-        head -c 3000000 </dev/urandom >content/file2.zip
-        
-        echo "testing" > content/file*3.txt
-        echo "testing" > content/file4.txt
-        echo "testing" > content/file5.txt
-        echo "testing" > content/file6.txt
-        echo "testing" > content/file7.txt
-        
-        wc -c content/*
+        cd content
+        touch empty.txt
     - name: Upload First
-      uses: konradpabjan/upload-artifact@main
+      uses: actions/upload-artifact@v2.2.4
       with:
         name: my-artifact
-        path: |
-          content/*
-        retention-days: 1
-        
-    - name: Upload Second
-      uses: konradpabjan/upload-artifact@main
-      with:
-        name: my-artifact2
         path: |
           content/*
         retention-days: 1
