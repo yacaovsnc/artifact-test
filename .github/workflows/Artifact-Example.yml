@@ -2,9 +2,9 @@ name: Test_Artifact_V2
 on: workflow_dispatch
 jobs:
   Artifact-Upload:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-    - name: Create 2zip files
+    - name: Create an file that is of size 0
       run: |
         mkdir content
         cd content
