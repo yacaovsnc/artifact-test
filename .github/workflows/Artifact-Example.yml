@@ -2,7 +2,7 @@ name: Test_Artifact_V2
 on: workflow_dispatch
 jobs:
   Artifact-Upload:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Create large file
       run: |
@@ -20,8 +20,10 @@ jobs:
   Artifact-Download:
     runs-on: ubuntu-latest
     steps:
-    - name: Sleep for 10 seconds
+    - name: Sleep for 15 seconds
       run: |
         sleep 10
     - name: Download artifact
-      uses: konradpabjan/download-artifact@main 
+      uses: konradpabjan/download-artifact@main
+      with:
+        name: my-artifact
