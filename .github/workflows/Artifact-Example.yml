@@ -4,11 +4,11 @@ jobs:
   Artifact-Upload:
     runs-on: windows-latest
     steps:
-    - name: Create an file that is of size 0
+    - name: Create large file
       run: |
         mkdir content
         cd content
-        touch empty.txt
+        head -c 100000000 </dev/urandom >file1.zip
     - name: Upload First
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -19,7 +19,9 @@ jobs:
         
   Artifact-Download:
     runs-on: ubuntu-latest
-    needs: Artifact-Upload
     steps:
+    - name: Sleep for 10 seconds
+      run: |
+        sleep 10
     - name: Download artifact
       uses: konradpabjan/download-artifact@main 
