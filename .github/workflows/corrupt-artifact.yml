@@ -1,0 +1,109 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Corrupt-Artifact
+
+on:
+    workflow_dispatch
+
+jobs:
+    uploads:
+        name: Uploads
+        strategy:
+            matrix:
+                size: [
+                    339147981, 331145681, 281703151,
+                    339147982, 331145682, 281703152,
+                    339147983, 331145683, 281703153,
+                    339147984, 331145684, 281703154,
+                    339147985, 331145685, 281703155,
+                    339147986, 331145686, 281703156,
+                    339147987, 331145687, 281703157,
+                    339147988, 331145688, 281703158,
+                    339147989, 331145689, 281703159,
+                ]
+
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Generate
+              env:
+                    DATA_SIZE: ${{ matrix.size }}
+              run: |
+                cat << EOF > test.py
+                #!/usr/bin/python
+
+                import os
+                import sys
+
+                def rand():
+                    global seed
+                    seed = (1103515245 * seed + 12345) % (2 ** 31)
+                    return seed;
+
+                args = sys.argv
+                if len(args) != 3:
+                    print('Bad args')
+                seed = int(args[1])
+                num_bytes = int(args[2])
+
+                buffer_size = 1000000
+
+                data = bytearray(buffer_size)
+                for i in range(buffer_size):
+                    byte = (rand() >> 16) & 0xFF
+                    data[i] = byte
+
+                while num_bytes > buffer_size:
+                    os.write(sys.stdout.fileno(), data)
+                    num_bytes -= buffer_size
+
+                os.write(sys.stdout.fileno(), data[:num_bytes])
+                EOF
+                python3 test.py "$DATA_SIZE" "$DATA_SIZE" > "data-$DATA_SIZE"
+                ls -l
+                md5sum "data-$DATA_SIZE" | tee "data-$DATA_SIZE".md5sum
+
+            - name: Sleep
+              run: |
+                MY_SLEEP=$(( $RANDOM * 15 / 32767 ))
+                echo "Sleeping for $MY_SLEEP"
+                sleep "$MY_SLEEP"
+
+            - name: Upload data
+              uses: actions/upload-artifact@v2
+              with:
+                name: art-data-${{ matrix.size }}
+                path: data-${{ matrix.size }}
+
+            - name: Upload md5
+              uses: actions/upload-artifact@v2
+              with:
+                name: art-data-${{ matrix.size }}-md5
+                path: data-${{ matrix.size }}.md5sum
+
+            - name: Check
+              env:
+                    DATA_SIZE: ${{ matrix.size }}
+              run: |
+                ls -l
+                md5sum "data-$DATA_SIZE"
+
+    downloads:
+        name: Downloads
+        runs-on: ubuntu-20.04
+        needs: uploads
+        steps:
+            - name: Download all
+              uses: actions/download-artifact@v2
+
+            - name: Check
+              run: |
+                ls -l
+                mv */* .
+                rmdir */
+                ls -l
+                md5sum *
+                for m in *.md5sum
+                do
+                    echo "Checking $m"
+                    md5sum -c "$m"
+                done
