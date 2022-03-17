@@ -73,12 +73,14 @@ jobs:
               with:
                 name: art-data-${{ matrix.size }}
                 path: data-${{ matrix.size }}
+                retention-days: 1
 
             - name: Upload md5
               uses: actions/upload-artifact@v2
               with:
                 name: art-data-${{ matrix.size }}-md5
                 path: data-${{ matrix.size }}.md5sum
+                retention-days: 1
 
             - name: Check
               env:
