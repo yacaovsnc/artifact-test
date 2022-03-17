@@ -69,14 +69,14 @@ jobs:
                 sleep "$MY_SLEEP"
 
             - name: Upload data
-              uses: actions/upload-artifact@v2
+              uses: konradpabjan/upload-artifact@main
               with:
                 name: art-data-${{ matrix.size }}
                 path: data-${{ matrix.size }}
                 retention-days: 1
 
             - name: Upload md5
-              uses: actions/upload-artifact@v2
+              uses: konradpabjan/upload-artifact@main
               with:
                 name: art-data-${{ matrix.size }}-md5
                 path: data-${{ matrix.size }}.md5sum
