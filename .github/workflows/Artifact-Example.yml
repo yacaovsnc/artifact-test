@@ -9,12 +9,13 @@ jobs:
         mkdir content
         cd content
         head -c 100000000 </dev/urandom >file1.zip
+        cd ..
     - name: Upload First
       uses: actions/upload-artifact@v2.2.4
       with:
         name: my-artifact
         path: |
-          ../content/*
+          /content/*
         retention-days: 1
   
         
