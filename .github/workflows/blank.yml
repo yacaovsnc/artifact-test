@@ -1,0 +1,73 @@
+name: artifact-basics
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'toolsets/**'
+    - '.github/workflows/artifact-basics.yml'
+  schedule:
+    - cron: '15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  upload-artifacts:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    name: artifact upload on ${{ matrix.os }}
+    steps:
+        - uses: actions/checkout@v4
+        - shell: bash
+          run: |
+            mkdir artifact-path
+            echo "foo" > artifact-path/hello.txt
+            echo "hello there" > artifact-path/world.txt
+        - uses: actions/upload-artifact@v3
+          with:
+            name: my-artifact-${{ matrix.os }}
+            path: artifact-path/*
+
+        - shell: bash
+          run: |
+            echo "hello, world" > my-artifact.txt
+        - uses: actions/upload-artifact@v3
+          with:
+            name: another-artifact-${{ matrix.os }}
+            path: my-artifact.txt
+            
+  download-single-artifact:
+    needs: upload-artifacts
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    name: single artifact download on ${{ matrix.os }}
+    steps:
+        - uses: actions/download-artifact@v3
+          with:
+            name: my-artifact-${{ matrix.os }}
+            path: artifact-path
+        - name: Fail if artifact not downloaded
+          shell: bash
+          run: |
+            ls -al
+            ls -al artifact-path/
+            if [ $(cat artifact-path/hello.txt) == "foo" ]
+            then 
+              echo "Artifact Download succeeded for first file"
+            else 
+              echo "Download artifact failed for the first file"
+              echo $(cat artifact-path/hello.txt)
+              exit 1
+            fi
+            if [ "$(cat artifact-path/world.txt)" == "hello there" ]
+            then 
+              echo "Artifact Download succeeded for second file"
+            else 
+              echo "Download artifact failed for the second file"
+              echo $(cat artifact-path/world.txt)
+              exit 1
+            fi
