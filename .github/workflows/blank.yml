@@ -1,12 +1,7 @@
 name: artifact-basics
 
 on:
-  push:
-    branches:
-    - main
-    paths:
-    - 'toolsets/**'
-    - '.github/workflows/artifact-basics.yml'
+  merge_group:
   schedule:
     - cron: '15 * * * *'
   workflow_dispatch:
